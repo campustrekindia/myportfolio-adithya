@@ -23,6 +23,18 @@
                         sans: ['Outfit', 'sans-serif'],
                         display: ['Space Grotesk', 'sans-serif'],
                     },
+                    colors: {
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            900: '#1c1917',
+                        },
+                        emerald: {
+                            850: '#064e3b', // Deep forest
+                            950: '#022c22', // Darker forest
+                        }
+                    },
                     animation: {
                         blob: "blob 10s infinite",
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
@@ -47,7 +59,7 @@
                         }
                     },
                     backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)",
+                        'grid-pattern': "linear-gradient(to right, #e7e5e4 1px, transparent 1px), linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)",
                     }
                 }
             }
@@ -64,45 +76,46 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
-        }
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: #f5f5f4;
         }
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: #059669; /* emerald-600 */
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: #047857;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-900 selection:bg-blue-100 selection:text-blue-900 antialiased overflow-x-hidden">
+<body class="bg-stone-50 text-stone-900 selection:bg-emerald-100 selection:text-emerald-900 antialiased overflow-x-hidden">
 
     <!-- Grid Background -->
-    <div class="fixed inset-0 z-0 bg-grid-pattern bg-[size:40px_40px] opacity-[0.4] pointer-events-none"></div>
+    <div class="fixed inset-0 z-0 bg-grid-pattern bg-[size:40px_40px] opacity-[0.6] pointer-events-none"></div>
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6 bg-transparent">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
             <div class="text-xl font-display font-bold tracking-tighter flex items-center gap-2 group cursor-pointer">
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">A</div>
-                <span class="group-hover:text-blue-600 transition-colors">Adithya Reddy</span>
+                <!-- Forest Logo: Leaf Green to Deep Emerald -->
+                <div class="w-10 h-10 bg-gradient-to-br from-emerald-600 to-teal-800 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="sprout" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="group-hover:text-emerald-700 transition-colors">Adithya Reddy</span>
             </div>
-            <div class="hidden md:flex gap-8 items-center bg-white/50 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/50 shadow-sm">
-                <a href="#home" class="nav-link text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Home</a>
-                <a href="#experience" class="nav-link text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Experience</a>
-                <a href="#ventures" class="nav-link text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Ventures</a>
-                <a href="#projects" class="nav-link text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
-                <a href="#contact" class="nav-link text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+            <div class="hidden md:flex gap-8 items-center bg-white/60 backdrop-blur-md px-6 py-2.5 rounded-full border border-stone-200/50 shadow-sm">
+                <a href="#home" class="nav-link text-sm font-medium text-stone-600 hover:text-emerald-700 transition-colors">Home</a>
+                <a href="#experience" class="nav-link text-sm font-medium text-stone-600 hover:text-emerald-700 transition-colors">Experience</a>
+                <a href="#ventures" class="nav-link text-sm font-medium text-stone-600 hover:text-emerald-700 transition-colors">Ventures</a>
+                <a href="#projects" class="nav-link text-sm font-medium text-stone-600 hover:text-emerald-700 transition-colors">Projects</a>
+                <a href="#contact" class="nav-link text-sm font-medium text-stone-600 hover:text-emerald-700 transition-colors">Contact</a>
             </div>
-            <a href="tel:9059473960" class="hidden md:flex px-5 py-2.5 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:shadow-gray-900/20 transform hover:-translate-y-0.5 items-center gap-2">
+            <!-- CTA Button: Deep Forest Green -->
+            <a href="tel:9059473960" class="hidden md:flex px-5 py-2.5 bg-emerald-900 text-white text-sm font-medium rounded-full hover:bg-emerald-800 transition-all shadow-lg hover:shadow-xl hover:shadow-emerald-900/20 transform hover:-translate-y-0.5 items-center gap-2">
                 <i data-lucide="phone" class="w-4 h-4"></i>
                 <span>Call Now</span>
             </a>
@@ -111,19 +124,19 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative pt-32 pb-20 px-4 sm:px-6 max-w-6xl mx-auto min-h-[90vh] flex items-center">
-        <!-- Animated Background Elements -->
-        <div class="absolute top-20 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div class="absolute top-40 right-40 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-20 left-20 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        <!-- Animated Background Elements: Forest Colors -->
+        <div class="absolute top-20 right-0 w-96 h-96 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
+        <div class="absolute top-40 right-40 w-96 h-96 bg-lime-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-20 left-20 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000"></div>
 
         <div class="flex flex-col md:flex-row items-center gap-12 w-full relative z-10">
             <div class="flex-1 space-y-8">
                 <!-- Status Badge -->
                 <div class="animate-fade-in-up" style="animation-delay: 0.1s;">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wide shadow-sm hover:shadow-md transition-shadow cursor-default">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wide shadow-sm hover:shadow-md transition-shadow cursor-default">
                         <span class="relative flex h-2.5 w-2.5">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-lime-500"></span>
                         </span>
                         <span>Open to New Ventures</span>
                     </div>
@@ -131,38 +144,38 @@
                 
                 <!-- Main Heading -->
                 <div class="animate-fade-in-up" style="animation-delay: 0.2s;">
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-gray-900 leading-[1.1]">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-stone-900 leading-[1.1]">
                         Marketing <br />
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 animate-pulse-slow">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-green-600 to-teal-700 animate-pulse-slow">
                             Strategist
                         </span> & <br />
                         Entrepreneur
                     </h1>
                 </div>
                 
-                <p class="text-xl text-gray-600 max-w-2xl leading-relaxed animate-fade-in-up" style="animation-delay: 0.3s;">
-                    I build sustainable brands and high-performance digital experiences. 
-                    Specialized in scaling operations, generating revenue, and rapid web development.
+                <p class="text-xl text-stone-600 max-w-2xl leading-relaxed animate-fade-in-up" style="animation-delay: 0.3s;">
+                    Cultivating sustainable brands and high-performance digital ecosystems. 
+                    Specialized in scaling operations, generating revenue, and organic growth strategies.
                 </p>
 
                 <!-- Stats -->
                 <div class="flex flex-wrap gap-4 pt-4 animate-fade-in-up" style="animation-delay: 0.4s;">
-                    <div class="flex items-center gap-3 px-6 py-4 bg-white/80 backdrop-blur-sm border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
-                        <div class="p-2 bg-blue-50 rounded-lg">
-                            <i data-lucide="bar-chart-3" class="w-6 h-6 text-blue-600"></i>
+                    <div class="flex items-center gap-3 px-6 py-4 bg-white/80 backdrop-blur-sm border border-stone-200 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                        <div class="p-2 bg-emerald-50 rounded-lg">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6 text-emerald-600"></i>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold font-display text-gray-900">₹4Cr+</div>
-                            <div class="text-xs text-gray-500 font-medium uppercase tracking-wider">Revenue Generated</div>
+                            <div class="text-2xl font-bold font-display text-stone-900">₹4Cr+</div>
+                            <div class="text-xs text-stone-500 font-medium uppercase tracking-wider">Revenue Generated</div>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3 px-6 py-4 bg-white/80 backdrop-blur-sm border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
-                        <div class="p-2 bg-green-50 rounded-lg">
-                            <i data-lucide="users" class="w-6 h-6 text-green-600"></i>
+                    <div class="flex items-center gap-3 px-6 py-4 bg-white/80 backdrop-blur-sm border border-stone-200 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                        <div class="p-2 bg-lime-50 rounded-lg">
+                            <i data-lucide="users" class="w-6 h-6 text-lime-600"></i>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold font-display text-gray-900">4,000+</div>
-                            <div class="text-xs text-gray-500 font-medium uppercase tracking-wider">Leads Acquired</div>
+                            <div class="text-2xl font-bold font-display text-stone-900">4,000+</div>
+                            <div class="text-xs text-stone-500 font-medium uppercase tracking-wider">Leads Acquired</div>
                         </div>
                     </div>
                 </div>
@@ -170,48 +183,48 @@
             
             <!-- Hero Visual -->
             <div class="flex-1 w-full max-w-md relative hidden md:block animate-float">
-                <div class="relative bg-white/40 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-white/50 rotate-3 hover:rotate-0 transition-transform duration-700 group">
+                <div class="relative bg-white/60 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-white/50 rotate-3 hover:rotate-0 transition-transform duration-700 group">
                     <!-- Decorator Elements -->
-                    <div class="absolute -top-6 -right-6 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                        <i data-lucide="star" class="w-6 h-6 text-white fill-current"></i>
+                    <div class="absolute -top-6 -right-6 w-12 h-12 bg-lime-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                        <i data-lucide="sun" class="w-6 h-6 text-white fill-current"></i>
                     </div>
 
-                    <div class="flex items-center gap-4 mb-8 border-b border-gray-200/50 pb-6">
-                        <div class="w-14 h-14 bg-gradient-to-br from-gray-900 to-gray-700 rounded-2xl flex items-center justify-center shadow-lg">
+                    <div class="flex items-center gap-4 mb-8 border-b border-stone-200/50 pb-6">
+                        <div class="w-14 h-14 bg-gradient-to-br from-emerald-800 to-teal-900 rounded-2xl flex items-center justify-center shadow-lg">
                             <i data-lucide="trending-up" class="w-7 h-7 text-white"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-xl font-display">Performance Metrics</h3>
-                            <p class="text-sm text-gray-600">Eject Solutions Campaign</p>
+                            <h3 class="font-bold text-xl font-display text-emerald-950">Growth Metrics</h3>
+                            <p class="text-sm text-stone-600">Eject Solutions Campaign</p>
                         </div>
                     </div>
                     
                     <div class="space-y-6">
                         <div class="space-y-2 group-hover:scale-105 transition-transform duration-300">
                             <div class="flex justify-between text-sm font-semibold">
-                                <span class="text-gray-700">Lead Generation</span>
-                                <span class="text-green-600">+4,000 Leads</span>
+                                <span class="text-stone-700">Lead Generation</span>
+                                <span class="text-emerald-700">+4,000 Leads</span>
                             </div>
-                            <div class="h-3 bg-gray-100 rounded-full overflow-hidden shadow-inner">
-                                <div class="h-full w-[0%] animate-[widthGrow_1.5s_ease-out_forwards] bg-gradient-to-r from-green-400 to-green-600 rounded-full" style="width: 95%"></div>
+                            <div class="h-3 bg-stone-200 rounded-full overflow-hidden shadow-inner">
+                                <div class="h-full w-[0%] animate-[widthGrow_1.5s_ease-out_forwards] bg-gradient-to-r from-lime-500 to-emerald-600 rounded-full" style="width: 95%"></div>
                             </div>
                         </div>
                         <div class="space-y-2 group-hover:scale-105 transition-transform duration-300 delay-100">
                             <div class="flex justify-between text-sm font-semibold">
-                                <span class="text-gray-700">Revenue (Edu Sector)</span>
-                                <span class="text-blue-600">₹4 Crores+</span>
+                                <span class="text-stone-700">Revenue (Edu Sector)</span>
+                                <span class="text-teal-700">₹4 Crores+</span>
                             </div>
-                            <div class="h-3 bg-gray-100 rounded-full overflow-hidden shadow-inner">
-                                <div class="h-full w-[0%] animate-[widthGrow_1.5s_ease-out_forwards] bg-gradient-to-r from-blue-400 to-blue-600 rounded-full" style="width: 88%"></div>
+                            <div class="h-3 bg-stone-200 rounded-full overflow-hidden shadow-inner">
+                                <div class="h-full w-[0%] animate-[widthGrow_1.5s_ease-out_forwards] bg-gradient-to-r from-teal-400 to-teal-700 rounded-full" style="width: 88%"></div>
                             </div>
                         </div>
                         <div class="space-y-2 group-hover:scale-105 transition-transform duration-300 delay-200">
                             <div class="flex justify-between text-sm font-semibold">
-                                <span class="text-gray-700">Study Abroad Rev.</span>
-                                <span class="text-indigo-600">₹60 Lakhs+</span>
+                                <span class="text-stone-700">Study Abroad Rev.</span>
+                                <span class="text-green-700">₹60 Lakhs+</span>
                             </div>
-                            <div class="h-3 bg-gray-100 rounded-full overflow-hidden shadow-inner">
-                                <div class="h-full w-[0%] animate-[widthGrow_1.5s_ease-out_forwards] bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-full" style="width: 75%"></div>
+                            <div class="h-3 bg-stone-200 rounded-full overflow-hidden shadow-inner">
+                                <div class="h-full w-[0%] animate-[widthGrow_1.5s_ease-out_forwards] bg-gradient-to-r from-green-400 to-green-700 rounded-full" style="width: 75%"></div>
                             </div>
                         </div>
                     </div>
@@ -221,39 +234,40 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-white relative">
+    <section id="experience" class="py-20 bg-stone-50 relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16">
                 <div>
-                    <h2 class="text-4xl font-display font-bold text-gray-900">Professional Journey</h2>
-                    <p class="text-gray-500 mt-3 text-lg">Leading operations & marketing strategies.</p>
+                    <h2 class="text-4xl font-display font-bold text-emerald-950">Professional Journey</h2>
+                    <p class="text-stone-500 mt-3 text-lg">Leading operations & planting seeds for growth.</p>
                 </div>
             </div>
 
-            <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-blue-200 before:to-transparent">
+            <!-- Timeline Line: Emerald -->
+            <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-emerald-200 before:to-transparent">
                 
                 <!-- Job 1 -->
                 <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-600 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:scale-110 transition-transform duration-300">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-emerald-700 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:scale-110 transition-transform duration-300">
                         <i data-lucide="trending-up" class="w-5 h-5"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 group-hover:-translate-y-1">
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group-hover:-translate-y-1">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-gray-900">Digital Marketing Manager</h3>
-                            <span class="text-xs font-bold px-3 py-1 bg-green-100 text-green-700 rounded-full uppercase tracking-wide">High Impact</span>
+                            <h3 class="font-bold text-xl text-stone-900">Digital Marketing Manager</h3>
+                            <span class="text-xs font-bold px-3 py-1 bg-lime-100 text-lime-800 rounded-full uppercase tracking-wide">High Impact</span>
                         </div>
-                        <div class="text-base font-semibold text-blue-600 mb-4">Eject Solutions</div>
-                        <ul class="space-y-3 text-gray-600">
+                        <div class="text-base font-semibold text-emerald-700 mb-4">Eject Solutions</div>
+                        <ul class="space-y-3 text-stone-600">
                             <li class="flex gap-3 items-start">
-                                <span class="text-blue-500 mt-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i></span>
+                                <span class="text-emerald-500 mt-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i></span>
                                 <span>Generated <strong>4k+ qualified leads</strong> within just 3 months.</span>
                             </li>
                             <li class="flex gap-3 items-start">
-                                <span class="text-blue-500 mt-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i></span>
+                                <span class="text-emerald-500 mt-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i></span>
                                 <span>Drove <strong>₹4Cr+ revenue</strong> in the Education Sector vertical.</span>
                             </li>
                             <li class="flex gap-3 items-start">
-                                <span class="text-blue-500 mt-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i></span>
+                                <span class="text-emerald-500 mt-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i></span>
                                 <span>Secured <strong>20+ Abroad Leads</strong> generating ₹60L+ revenue.</span>
                             </li>
                         </ul>
@@ -262,15 +276,15 @@
 
                 <!-- Job 2 -->
                 <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-white border-gray-200 text-gray-500 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:border-blue-200 group-hover:text-blue-600 transition-colors">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-white border-stone-200 text-stone-500 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:border-emerald-200 group-hover:text-emerald-600 transition-colors">
                         <i data-lucide="globe" class="w-5 h-5"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 group-hover:-translate-y-1">
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group-hover:-translate-y-1">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-gray-900">Operations Lead</h3>
+                            <h3 class="font-bold text-xl text-stone-900">Operations Lead</h3>
                         </div>
-                        <div class="text-base font-semibold text-blue-600 mb-4">TruRoute Abroad Edu</div>
-                        <p class="text-gray-600 leading-relaxed">
+                        <div class="text-base font-semibold text-emerald-700 mb-4">TruRoute Abroad Edu</div>
+                        <p class="text-stone-600 leading-relaxed">
                             Managed end-to-end operations for study abroad consultancy services, streamlining student processing and university partnerships.
                         </p>
                     </div>
@@ -278,16 +292,16 @@
 
                 <!-- Job 3 -->
                 <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-white border-gray-200 text-gray-500 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:border-blue-200 group-hover:text-blue-600 transition-colors">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-white border-stone-200 text-stone-500 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:border-emerald-200 group-hover:text-emerald-600 transition-colors">
                         <i data-lucide="award" class="w-5 h-5"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 group-hover:-translate-y-1">
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group-hover:-translate-y-1">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-gray-900">Brand Developer</h3>
-                            <span class="text-sm font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded">2023 - 2024</span>
+                            <h3 class="font-bold text-xl text-stone-900">Brand Developer</h3>
+                            <span class="text-sm font-medium text-stone-400 bg-stone-100 px-2 py-1 rounded">2023 - 2024</span>
                         </div>
-                        <div class="text-base font-semibold text-blue-600 mb-4">Int360</div>
-                        <p class="text-gray-600 leading-relaxed">
+                        <div class="text-base font-semibold text-emerald-700 mb-4">Int360</div>
+                        <p class="text-stone-600 leading-relaxed">
                             Spearheaded brand strategy and development initiatives, enhancing market presence and brand identity during a critical growth year.
                         </p>
                     </div>
@@ -298,59 +312,60 @@
     </section>
 
     <!-- Ventures Section -->
-    <section id="ventures" class="py-24 bg-slate-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="ventures" class="py-24 bg-white relative overflow-hidden">
+        <!-- Subtle leaf pattern overlay could go here -->
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-display font-bold text-gray-900">Entrepreneurial Ventures</h2>
-                <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg">
-                    Co-founding and building businesses from the ground up across Food & Beverage and Personal Care industries.
+                <h2 class="text-4xl font-display font-bold text-emerald-950">Entrepreneurial Ventures</h2>
+                <p class="text-stone-500 mt-4 max-w-2xl mx-auto text-lg">
+                    Co-founding and cultivating businesses from the ground up across Food & Beverage and Personal Care.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Venture 1 -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 border border-gray-100">
-                    <div class="h-40 bg-orange-50 flex items-center justify-center relative overflow-hidden group-hover:bg-orange-100 transition-colors">
+                <div class="group bg-stone-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 border border-stone-100">
+                    <div class="h-40 bg-orange-100/50 flex items-center justify-center relative overflow-hidden group-hover:bg-orange-100 transition-colors">
                         <div class="absolute inset-0 bg-orange-500 opacity-[0.03] pattern-dots"></div>
                         <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             <i data-lucide="utensils" class="w-10 h-10 text-orange-600"></i>
                         </div>
                     </div>
                     <div class="p-8">
-                        <h3 class="font-bold text-2xl mb-2 font-display">Tales Of Pakoda</h3>
+                        <h3 class="font-bold text-2xl mb-2 font-display text-stone-900">Tales Of Pakoda</h3>
                         <div class="flex items-center gap-2 mb-4">
                             <span class="w-2 h-2 rounded-full bg-orange-500"></span>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Vijayawada • Co-Founder</span>
+                            <span class="text-xs font-bold text-stone-400 uppercase tracking-wider">Vijayawada • Co-Founder</span>
                         </div>
-                        <p class="text-gray-600 leading-relaxed">
-                            Established a popular local food venture specializing in traditional snacks with a modern twist, capturing the local market in Vijayawada.
+                        <p class="text-stone-600 leading-relaxed">
+                            Established a popular local food venture specializing in traditional snacks with a modern twist.
                         </p>
                     </div>
                 </div>
 
                 <!-- Venture 2 -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500 border border-gray-100">
-                    <div class="h-40 bg-green-50 flex items-center justify-center relative overflow-hidden group-hover:bg-green-100 transition-colors">
+                <div class="group bg-stone-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500 border border-stone-100">
+                    <div class="h-40 bg-lime-100/50 flex items-center justify-center relative overflow-hidden group-hover:bg-lime-100 transition-colors">
                         <div class="absolute inset-0 bg-green-500 opacity-[0.03] pattern-dots"></div>
                         <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                            <i data-lucide="leaf" class="w-10 h-10 text-green-600"></i>
+                            <i data-lucide="leaf" class="w-10 h-10 text-lime-600"></i>
                         </div>
                     </div>
                     <div class="p-8">
-                        <h3 class="font-bold text-2xl mb-2 font-display">Healthy Hut</h3>
+                        <h3 class="font-bold text-2xl mb-2 font-display text-stone-900">Healthy Hut</h3>
                         <div class="flex items-center gap-2 mb-4">
-                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Hyderabad • Co-Founder</span>
+                            <span class="w-2 h-2 rounded-full bg-lime-500"></span>
+                            <span class="text-xs font-bold text-stone-400 uppercase tracking-wider">Hyderabad • Co-Founder</span>
                         </div>
-                        <p class="text-gray-600 leading-relaxed">
-                            A "Guilt-Free Cloud Kitchen" concept serving healthy alternatives. Capitalized on the growing demand for nutritious delivery options.
+                        <p class="text-stone-600 leading-relaxed">
+                            A "Guilt-Free Cloud Kitchen" concept serving healthy alternatives. Capitalized on demand for nutritious food.
                         </p>
                     </div>
                 </div>
 
                 <!-- Venture 3 -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 border border-gray-100">
-                    <div class="h-40 bg-purple-50 flex items-center justify-center relative overflow-hidden group-hover:bg-purple-100 transition-colors">
+                <div class="group bg-stone-50 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 border border-stone-100">
+                    <div class="h-40 bg-purple-100/50 flex items-center justify-center relative overflow-hidden group-hover:bg-purple-100 transition-colors">
                         <div class="absolute inset-0 bg-purple-500 opacity-[0.03] pattern-dots"></div>
                         <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                              <span class="text-2xl font-serif font-bold text-purple-800">H</span>
@@ -358,15 +373,15 @@
                     </div>
                     <div class="p-8">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-bold text-2xl font-display">Heliom</h3>
+                            <h3 class="font-bold text-2xl font-display text-stone-900">Heliom</h3>
                             <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 font-bold rounded-full">R&D</span>
                         </div>
                         <div class="flex items-center gap-2 mb-4">
                             <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Co-Founder</span>
+                            <span class="text-xs font-bold text-stone-400 uppercase tracking-wider">Co-Founder</span>
                         </div>
-                        <p class="text-gray-600 leading-relaxed">
-                            Developing an Ayurvedic Cosmetic Brand combining traditional wisdom with modern dermatological science.
+                        <p class="text-stone-600 leading-relaxed">
+                            Developing an Ayurvedic Cosmetic Brand combining nature's wisdom with modern science.
                         </p>
                     </div>
                 </div>
@@ -374,15 +389,15 @@
         </div>
     </section>
 
-    <!-- NEW: Web Projects Section -->
-    <section id="projects" class="py-24 bg-white">
+    <!-- Web Projects Section -->
+    <section id="projects" class="py-24 bg-stone-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16">
                 <div>
-                    <h2 class="text-4xl font-display font-bold text-gray-900">Web Development Portfolio</h2>
-                    <p class="text-gray-500 mt-3 text-lg">10+ High-performance websites deployed recently.</p>
+                    <h2 class="text-4xl font-display font-bold text-emerald-950">Web Ecosystem</h2>
+                    <p class="text-stone-500 mt-3 text-lg">10+ Digital environments deployed recently.</p>
                 </div>
-                <a href="https://vercel.com/campus-trek-india" target="_blank" class="mt-6 md:mt-0 px-6 py-3 bg-gray-50 hover:bg-gray-100 rounded-xl text-gray-900 font-medium flex items-center gap-2 group transition-colors">
+                <a href="https://vercel.com/campus-trek-india" target="_blank" class="mt-6 md:mt-0 px-6 py-3 bg-white hover:bg-stone-100 rounded-xl text-stone-900 font-medium flex items-center gap-2 group transition-colors border border-stone-200">
                     View Deployment History 
                     <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -390,62 +405,62 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project Card Template -->
-                <div class="group relative bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1">
+                <div class="group relative bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300 hover:-translate-y-1">
                     <div class="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <i data-lucide="external-link" class="w-5 h-5 text-gray-400"></i>
+                         <i data-lucide="external-link" class="w-5 h-5 text-stone-400"></i>
                     </div>
                     
                     <div class="flex justify-between items-start mb-6">
-                        <div class="p-3 bg-indigo-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="plane" class="w-6 h-6 text-indigo-600"></i>
+                        <div class="p-3 bg-emerald-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="plane" class="w-6 h-6 text-emerald-600"></i>
                         </div>
-                        <span class="text-xs font-mono font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded">Feb 2026</span>
+                        <span class="text-xs font-mono font-medium text-stone-400 bg-stone-100 px-2 py-1 rounded">Feb 2026</span>
                     </div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2 font-display group-hover:text-blue-600 transition-colors">TruRoute Abroad</h3>
-                    <a href="https://trurouteabroad.vercel.app" target="_blank" class="text-xs font-mono text-gray-500 mb-4 block hover:text-indigo-600 truncate">trurouteabroad.vercel.app</a>
-                    <p class="text-sm text-gray-600 mb-6 leading-relaxed h-12">
+                    <h3 class="font-bold text-xl text-stone-900 mb-2 font-display group-hover:text-emerald-700 transition-colors">TruRoute Abroad</h3>
+                    <a href="https://trurouteabroad.vercel.app" target="_blank" class="text-xs font-mono text-stone-500 mb-4 block hover:text-emerald-600 truncate">trurouteabroad.vercel.app</a>
+                    <p class="text-sm text-stone-600 mb-6 leading-relaxed h-12">
                         Study abroad consultancy platform facilitating student university search.
                     </p>
                     <div class="flex gap-2">
-                        <span class="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-[11px] uppercase font-bold rounded-lg tracking-wide">Web App</span>
+                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[11px] uppercase font-bold rounded-lg tracking-wide">Web App</span>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="group relative bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300 hover:-translate-y-1">
+                <div class="group relative bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-2xl hover:shadow-lime-500/10 transition-all duration-300 hover:-translate-y-1">
                     <div class="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <i data-lucide="external-link" class="w-5 h-5 text-gray-400"></i>
+                         <i data-lucide="external-link" class="w-5 h-5 text-stone-400"></i>
                     </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="p-3 bg-green-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="globe" class="w-6 h-6 text-green-600"></i>
+                        <div class="p-3 bg-lime-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="globe" class="w-6 h-6 text-lime-600"></i>
                         </div>
-                        <span class="text-xs font-mono font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded">Jan 2026</span>
+                        <span class="text-xs font-mono font-medium text-stone-400 bg-stone-100 px-2 py-1 rounded">Jan 2026</span>
                     </div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2 font-display group-hover:text-green-600 transition-colors">Campus Trek India</h3>
-                    <a href="https://www.campustrekindia.com" target="_blank" class="text-xs font-mono text-gray-500 mb-4 block hover:text-green-600 truncate">www.campustrekindia.com</a>
-                    <p class="text-sm text-gray-600 mb-6 leading-relaxed h-12">
+                    <h3 class="font-bold text-xl text-stone-900 mb-2 font-display group-hover:text-lime-600 transition-colors">Campus Trek India</h3>
+                    <a href="https://www.campustrekindia.com" target="_blank" class="text-xs font-mono text-stone-500 mb-4 block hover:text-lime-600 truncate">www.campustrekindia.com</a>
+                    <p class="text-sm text-stone-600 mb-6 leading-relaxed h-12">
                         Official educational organization website for student services.
                     </p>
                     <div class="flex gap-2">
-                        <span class="px-2.5 py-1 bg-green-50 text-green-700 text-[11px] uppercase font-bold rounded-lg tracking-wide">Live</span>
+                        <span class="px-2.5 py-1 bg-lime-50 text-lime-700 text-[11px] uppercase font-bold rounded-lg tracking-wide">Live</span>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="group relative bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-1">
+                <div class="group relative bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-1">
                     <div class="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <i data-lucide="external-link" class="w-5 h-5 text-gray-400"></i>
+                         <i data-lucide="external-link" class="w-5 h-5 text-stone-400"></i>
                     </div>
                     <div class="flex justify-between items-start mb-6">
                         <div class="p-3 bg-purple-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
                             <i data-lucide="heart" class="w-6 h-6 text-purple-600"></i>
                         </div>
-                        <span class="text-xs font-mono font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded">Jan 2026</span>
+                        <span class="text-xs font-mono font-medium text-stone-400 bg-stone-100 px-2 py-1 rounded">Jan 2026</span>
                     </div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2 font-display group-hover:text-purple-600 transition-colors">Heliom Wellness</h3>
-                    <a href="https://heliomwellness.com" target="_blank" class="text-xs font-mono text-gray-500 mb-4 block hover:text-purple-600 truncate">heliomwellness.com</a>
-                    <p class="text-sm text-gray-600 mb-6 leading-relaxed h-12">
+                    <h3 class="font-bold text-xl text-stone-900 mb-2 font-display group-hover:text-purple-600 transition-colors">Heliom Wellness</h3>
+                    <a href="https://heliomwellness.com" target="_blank" class="text-xs font-mono text-stone-500 mb-4 block hover:text-purple-600 truncate">heliomwellness.com</a>
+                    <p class="text-sm text-stone-600 mb-6 leading-relaxed h-12">
                         D2C E-commerce platform for Ayurvedic cosmetic brand.
                     </p>
                     <div class="flex gap-2">
@@ -454,40 +469,40 @@
                 </div>
 
                 <!-- Project 4 -->
-                <div class="group relative bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1">
+                <div class="group relative bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-300 hover:-translate-y-1">
                      <div class="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <i data-lucide="external-link" class="w-5 h-5 text-gray-400"></i>
+                         <i data-lucide="external-link" class="w-5 h-5 text-stone-400"></i>
                     </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="p-3 bg-blue-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="briefcase" class="w-6 h-6 text-blue-600"></i>
+                        <div class="p-3 bg-teal-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="briefcase" class="w-6 h-6 text-teal-600"></i>
                         </div>
-                        <span class="text-xs font-mono font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded">Jan 2026</span>
+                        <span class="text-xs font-mono font-medium text-stone-400 bg-stone-100 px-2 py-1 rounded">Jan 2026</span>
                     </div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2 font-display group-hover:text-blue-600 transition-colors">Get Internships</h3>
-                    <a href="https://getinternships.vercel.app" target="_blank" class="text-xs font-mono text-gray-500 mb-4 block hover:text-blue-600 truncate">getinternships.vercel.app</a>
-                    <p class="text-sm text-gray-600 mb-6 leading-relaxed h-12">
+                    <h3 class="font-bold text-xl text-stone-900 mb-2 font-display group-hover:text-teal-600 transition-colors">Get Internships</h3>
+                    <a href="https://getinternships.vercel.app" target="_blank" class="text-xs font-mono text-stone-500 mb-4 block hover:text-teal-600 truncate">getinternships.vercel.app</a>
+                    <p class="text-sm text-stone-600 mb-6 leading-relaxed h-12">
                         Portal for student internships and opportunities.
                     </p>
                     <div class="flex gap-2">
-                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] uppercase font-bold rounded-lg tracking-wide">Portal</span>
+                        <span class="px-2.5 py-1 bg-teal-50 text-teal-700 text-[11px] uppercase font-bold rounded-lg tracking-wide">Portal</span>
                     </div>
                 </div>
 
                  <!-- Project 5 -->
-                 <div class="group relative bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300 hover:-translate-y-1">
+                 <div class="group relative bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300 hover:-translate-y-1">
                      <div class="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <i data-lucide="external-link" class="w-5 h-5 text-gray-400"></i>
+                         <i data-lucide="external-link" class="w-5 h-5 text-stone-400"></i>
                     </div>
                     <div class="flex justify-between items-start mb-6">
                         <div class="p-3 bg-orange-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
                             <i data-lucide="map-pin" class="w-6 h-6 text-orange-600"></i>
                         </div>
-                        <span class="text-xs font-mono font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded">Feb 2026</span>
+                        <span class="text-xs font-mono font-medium text-stone-400 bg-stone-100 px-2 py-1 rounded">Feb 2026</span>
                     </div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2 font-display group-hover:text-orange-600 transition-colors">PPSU Campus Visit</h3>
-                    <a href="https://ppsucampusvisitregistration.vercel.app" target="_blank" class="text-xs font-mono text-gray-500 mb-4 block hover:text-orange-600 truncate">ppsucampusvisitregistration...</a>
-                    <p class="text-sm text-gray-600 mb-6 leading-relaxed h-12">
+                    <h3 class="font-bold text-xl text-stone-900 mb-2 font-display group-hover:text-orange-600 transition-colors">PPSU Campus Visit</h3>
+                    <a href="https://ppsucampusvisitregistration.vercel.app" target="_blank" class="text-xs font-mono text-stone-500 mb-4 block hover:text-orange-600 truncate">ppsucampusvisitregistration...</a>
+                    <p class="text-sm text-stone-600 mb-6 leading-relaxed h-12">
                         Digital registration system for university campus visits.
                     </p>
                     <div class="flex gap-2">
@@ -496,19 +511,19 @@
                 </div>
 
                  <!-- Project 6 -->
-                 <div class="group relative bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-300 hover:-translate-y-1">
+                 <div class="group relative bg-white border border-stone-200 rounded-2xl p-6 hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-300 hover:-translate-y-1">
                      <div class="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <i data-lucide="external-link" class="w-5 h-5 text-gray-400"></i>
+                         <i data-lucide="external-link" class="w-5 h-5 text-stone-400"></i>
                     </div>
                     <div class="flex justify-between items-start mb-6">
                         <div class="p-3 bg-teal-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
                             <i data-lucide="layout-template" class="w-6 h-6 text-teal-600"></i>
                         </div>
-                        <span class="text-xs font-mono font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded">Jan 2026</span>
+                        <span class="text-xs font-mono font-medium text-stone-400 bg-stone-100 px-2 py-1 rounded">Jan 2026</span>
                     </div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2 font-display group-hover:text-teal-600 transition-colors">Credofolio</h3>
-                    <a href="https://credofolio.vercel.app" target="_blank" class="text-xs font-mono text-gray-500 mb-4 block hover:text-teal-600 truncate">credofolio.vercel.app</a>
-                    <p class="text-sm text-gray-600 mb-6 leading-relaxed h-12">
+                    <h3 class="font-bold text-xl text-stone-900 mb-2 font-display group-hover:text-teal-600 transition-colors">Credofolio</h3>
+                    <a href="https://credofolio.vercel.app" target="_blank" class="text-xs font-mono text-stone-500 mb-4 block hover:text-teal-600 truncate">credofolio.vercel.app</a>
+                    <p class="text-sm text-stone-600 mb-6 leading-relaxed h-12">
                         A modern portfolio builder designed for professionals.
                     </p>
                     <div class="flex gap-2">
@@ -517,26 +532,26 @@
                 </div>
 
                 <!-- Mini List for others -->
-                <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 border border-slate-200 mt-4">
-                    <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                        <span class="w-8 h-px bg-gray-300"></span> Other Deployments <span class="w-full h-px bg-gray-300"></span>
+                <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-gradient-to-br from-stone-50 to-white rounded-2xl p-8 border border-stone-200 mt-4">
+                    <h4 class="text-sm font-bold text-stone-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <span class="w-8 h-px bg-stone-300"></span> Other Deployments <span class="w-full h-px bg-stone-300"></span>
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <a href="https://projectgreengold.vercel.app" target="_blank" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                        <a href="https://projectgreengold.vercel.app" target="_blank" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 hover:border-emerald-400 hover:shadow-md transition-all group">
                             <div class="w-2 h-2 rounded-full bg-green-500 group-hover:scale-150 transition-transform"></div>
-                            <span class="text-sm font-medium text-gray-700 truncate">Project Green Gold</span>
+                            <span class="text-sm font-medium text-stone-700 truncate">Project Green Gold</span>
                         </a>
-                        <a href="https://budgetvoyager.vercel.app" target="_blank" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                        <a href="https://budgetvoyager.vercel.app" target="_blank" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 hover:border-emerald-400 hover:shadow-md transition-all group">
                             <div class="w-2 h-2 rounded-full bg-blue-500 group-hover:scale-150 transition-transform"></div>
-                            <span class="text-sm font-medium text-gray-700 truncate">Budget Voyager</span>
+                            <span class="text-sm font-medium text-stone-700 truncate">Budget Voyager</span>
                         </a>
-                        <a href="https://sits-website-final.vercel.app" target="_blank" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
+                        <a href="https://sits-website-final.vercel.app" target="_blank" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 hover:border-emerald-400 hover:shadow-md transition-all group">
                             <div class="w-2 h-2 rounded-full bg-indigo-500 group-hover:scale-150 transition-transform"></div>
-                            <span class="text-sm font-medium text-gray-700 truncate">SITS Website Final</span>
+                            <span class="text-sm font-medium text-stone-700 truncate">SITS Website Final</span>
                         </a>
-                         <a href="https://ejectsolutionsv1-1.vercel.app" target="_blank" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all group">
-                            <div class="w-2 h-2 rounded-full bg-gray-500 group-hover:scale-150 transition-transform"></div>
-                            <span class="text-sm font-medium text-gray-700 truncate">Eject Solutions v1.1</span>
+                         <a href="https://ejectsolutionsv1-1.vercel.app" target="_blank" class="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200 hover:border-emerald-400 hover:shadow-md transition-all group">
+                            <div class="w-2 h-2 rounded-full bg-stone-500 group-hover:scale-150 transition-transform"></div>
+                            <span class="text-sm font-medium text-stone-700 truncate">Eject Solutions v1.1</span>
                         </a>
                     </div>
                 </div>
@@ -545,39 +560,39 @@
     </section>
 
     <!-- Education & Achievements -->
-    <section id="education" class="py-24 bg-slate-50 relative overflow-hidden">
-        <!-- Decorator -->
-        <div class="absolute -left-20 top-40 w-80 h-80 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+    <section id="education" class="py-24 bg-stone-50 relative overflow-hidden">
+        <!-- Decorator: Soft Green Blur -->
+        <div class="absolute -left-20 top-40 w-80 h-80 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
 
         <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
             <div class="flex items-center gap-4 mb-10">
-                <div class="p-3 bg-blue-100 rounded-xl">
-                    <i data-lucide="graduation-cap" class="w-8 h-8 text-blue-700"></i>
+                <div class="p-3 bg-emerald-100 rounded-xl">
+                    <i data-lucide="graduation-cap" class="w-8 h-8 text-emerald-800"></i>
                 </div>
-                <h2 class="text-4xl font-display font-bold text-gray-900">Education & Campus Leadership</h2>
+                <h2 class="text-4xl font-display font-bold text-emerald-950">Education & Campus Leadership</h2>
             </div>
 
-            <div class="bg-white rounded-3xl p-10 border border-slate-200 shadow-xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -mr-10 -mt-10 z-0"></div>
+            <div class="bg-white rounded-3xl p-10 border border-stone-200 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-stone-50 rounded-bl-full -mr-10 -mt-10 z-0"></div>
                 
                 <div class="relative z-10">
                     <div class="flex flex-col md:flex-row justify-between mb-8">
                         <div>
-                            <h3 class="text-3xl font-display font-bold text-gray-900">KL University</h3>
-                            <p class="text-blue-600 font-medium text-lg mt-1">Specialised in Data Analytics</p>
+                            <h3 class="text-3xl font-display font-bold text-stone-900">KL University</h3>
+                            <p class="text-emerald-700 font-medium text-lg mt-1">Specialised in Data Analytics</p>
                         </div>
-                        <div class="text-gray-500 mt-2 md:mt-0 font-mono text-sm bg-gray-100 px-3 py-1 rounded h-fit">2019 - 2024</div>
+                        <div class="text-stone-500 mt-2 md:mt-0 font-mono text-sm bg-stone-100 px-3 py-1 rounded h-fit">2019 - 2024</div>
                     </div>
                     
-                    <div class="border-t border-slate-100 pt-8 mt-4">
+                    <div class="border-t border-stone-100 pt-8 mt-4">
                         <div class="flex items-start gap-6">
                             <div class="p-4 bg-red-50 rounded-2xl shadow-sm shrink-0">
                                 <i data-lucide="radio" class="w-8 h-8 text-red-500 animate-pulse-slow"></i>
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-1">CEO KL Radio</h4>
-                                <p class="text-sm text-gray-500 mb-4 font-medium uppercase tracking-wide">2022 - 2023</p>
-                                <p class="text-gray-700 leading-relaxed text-lg">
+                                <h4 class="text-xl font-bold text-stone-900 mb-1">CEO KL Radio</h4>
+                                <p class="text-sm text-stone-500 mb-4 font-medium uppercase tracking-wide">2022 - 2023</p>
+                                <p class="text-stone-700 leading-relaxed text-lg">
                                     Led the university's student radio station, managing content curation, team operations, and broadcasting strategies to engage the campus community.
                                 </p>
                             </div>
@@ -589,27 +604,27 @@
     </section>
 
     <!-- Footer / Contact -->
-    <footer id="contact" class="bg-[#0f172a] text-white py-24 relative overflow-hidden">
+    <footer id="contact" class="bg-[#022c22] text-white py-24 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-            <div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-900/20 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-3xl"></div>
+            <div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-emerald-900/30 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-teal-900/30 rounded-full blur-3xl"></div>
         </div>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">Let's build something <br><span class="text-blue-400">great together.</span></h2>
-                    <p class="text-gray-400 mb-10 max-w-md text-lg leading-relaxed">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight">Let's grow something <br><span class="text-emerald-400">great together.</span></h2>
+                    <p class="text-emerald-100/70 mb-10 max-w-md text-lg leading-relaxed">
                         Whether you need a digital growth strategy or want to discuss a new venture, I'm always open to connecting.
                     </p>
                     <div class="flex gap-4">
-                        <a href="#" class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all hover:-translate-y-1 hover:text-blue-400 border border-white/5">
+                        <a href="#" class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all hover:-translate-y-1 hover:text-emerald-400 border border-white/5">
                             <i data-lucide="linkedin" class="w-6 h-6"></i>
                         </a>
-                        <a href="mailto:adithyareddy639@gmail.com" class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all hover:-translate-y-1 hover:text-blue-400 border border-white/5">
+                        <a href="mailto:adithyareddy639@gmail.com" class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all hover:-translate-y-1 hover:text-emerald-400 border border-white/5">
                             <i data-lucide="mail" class="w-6 h-6"></i>
                         </a>
-                        <a href="#" class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all hover:-translate-y-1 hover:text-blue-400 border border-white/5">
+                        <a href="#" class="p-4 bg-white/5 hover:bg-white/10 rounded-2xl transition-all hover:-translate-y-1 hover:text-emerald-400 border border-white/5">
                             <i data-lucide="github" class="w-6 h-6"></i>
                         </a>
                     </div>
@@ -617,31 +632,31 @@
                 
                 <div class="grid grid-cols-1 gap-6">
                     <a href="mailto:adithyareddy639@gmail.com" class="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                        <div class="flex items-center gap-4 text-gray-400 mb-3">
-                            <div class="p-2 bg-blue-500/10 rounded-lg group-hover:bg-blue-500/20 transition-colors">
-                                <i data-lucide="mail" class="w-5 h-5 text-blue-400"></i>
+                        <div class="flex items-center gap-4 text-emerald-200/60 mb-3">
+                            <div class="p-2 bg-emerald-500/10 rounded-lg group-hover:bg-emerald-500/20 transition-colors">
+                                <i data-lucide="mail" class="w-5 h-5 text-emerald-400"></i>
                             </div>
                             <span class="font-semibold uppercase tracking-wider text-sm">Email</span>
                         </div>
-                        <span class="text-xl md:text-2xl font-medium text-white group-hover:text-blue-300 transition-colors break-all">
+                        <span class="text-xl md:text-2xl font-medium text-white group-hover:text-emerald-300 transition-colors break-all">
                             adithyareddy639@gmail.com
                         </span>
                     </a>
                     
                     <a href="tel:9059473960" class="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                        <div class="flex items-center gap-4 text-gray-400 mb-3">
-                             <div class="p-2 bg-green-500/10 rounded-lg group-hover:bg-green-500/20 transition-colors">
-                                <i data-lucide="phone" class="w-5 h-5 text-green-400"></i>
+                        <div class="flex items-center gap-4 text-emerald-200/60 mb-3">
+                             <div class="p-2 bg-lime-500/10 rounded-lg group-hover:bg-lime-500/20 transition-colors">
+                                <i data-lucide="phone" class="w-5 h-5 text-lime-400"></i>
                             </div>
                             <span class="font-semibold uppercase tracking-wider text-sm">Phone</span>
                         </div>
-                        <p class="text-xl md:text-2xl font-medium text-white group-hover:text-green-300 transition-colors">+91 90594 73960</p>
+                        <p class="text-xl md:text-2xl font-medium text-white group-hover:text-lime-300 transition-colors">+91 90594 73960</p>
                     </a>
 
                     <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-                        <div class="flex items-center gap-4 text-gray-400 mb-3">
-                             <div class="p-2 bg-purple-500/10 rounded-lg">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-purple-400"></i>
+                        <div class="flex items-center gap-4 text-emerald-200/60 mb-3">
+                             <div class="p-2 bg-teal-500/10 rounded-lg">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-teal-400"></i>
                             </div>
                             <span class="font-semibold uppercase tracking-wider text-sm">Location</span>
                         </div>
@@ -650,11 +665,11 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-20 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+            <div class="border-t border-emerald-900 mt-20 pt-8 flex flex-col md:flex-row justify-between items-center text-emerald-200/40 text-sm">
                 <p>&copy; 2026 Adithya Reddy. All rights reserved.</p>
                 <div class="flex items-center gap-2 mt-4 md:mt-0">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    <span>Systems Operational</span>
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    <span>Ecosystem Thriving</span>
                 </div>
             </div>
         </div>
