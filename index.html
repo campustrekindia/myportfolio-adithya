@@ -99,15 +99,17 @@
     <div class="fixed inset-0 z-0 bg-grid-pattern bg-[size:40px_40px] opacity-[0.6] pointer-events-none"></div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-6 bg-transparent">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 md:py-6 bg-transparent">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-            <div class="text-xl font-display font-bold tracking-tighter flex items-center gap-2 group cursor-pointer">
+            <div class="text-xl font-display font-bold tracking-tighter flex items-center gap-2 group cursor-pointer z-50 relative">
                 <!-- Forest Logo: Leaf Green to Deep Emerald -->
                 <div class="w-10 h-10 bg-gradient-to-br from-emerald-600 to-teal-800 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform duration-300">
                     <i data-lucide="sprout" class="w-5 h-5 text-white"></i>
                 </div>
                 <span class="group-hover:text-emerald-700 transition-colors">Adithya Reddy</span>
             </div>
+            
+            <!-- Desktop Menu -->
             <div class="hidden md:flex gap-8 items-center bg-white/60 backdrop-blur-md px-6 py-2.5 rounded-full border border-stone-200/50 shadow-sm">
                 <a href="#home" class="nav-link text-sm font-medium text-stone-600 hover:text-emerald-700 transition-colors">Home</a>
                 <a href="#experience" class="nav-link text-sm font-medium text-stone-600 hover:text-emerald-700 transition-colors">Experience</a>
@@ -115,20 +117,39 @@
                 <a href="#projects" class="nav-link text-sm font-medium text-stone-600 hover:text-emerald-700 transition-colors">Projects</a>
                 <a href="#contact" class="nav-link text-sm font-medium text-stone-600 hover:text-emerald-700 transition-colors">Contact</a>
             </div>
-            <!-- CTA Button: Deep Forest Green -->
+            
+            <!-- Desktop CTA -->
             <a href="tel:9059473960" class="hidden md:flex px-5 py-2.5 bg-emerald-900 text-white text-sm font-medium rounded-full hover:bg-emerald-800 transition-all shadow-lg hover:shadow-xl hover:shadow-emerald-900/20 transform hover:-translate-y-0.5 items-center gap-2">
                 <i data-lucide="phone" class="w-4 h-4"></i>
+                <span>Call Now</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-stone-800 z-50 relative focus:outline-none bg-white/50 backdrop-blur-sm rounded-lg">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 z-40 bg-stone-50/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center gap-8">
+            <a href="#home" class="mobile-link text-3xl font-display font-bold text-stone-800 hover:text-emerald-700 transition-colors">Home</a>
+            <a href="#experience" class="mobile-link text-3xl font-display font-bold text-stone-800 hover:text-emerald-700 transition-colors">Experience</a>
+            <a href="#ventures" class="mobile-link text-3xl font-display font-bold text-stone-800 hover:text-emerald-700 transition-colors">Ventures</a>
+            <a href="#projects" class="mobile-link text-3xl font-display font-bold text-stone-800 hover:text-emerald-700 transition-colors">Projects</a>
+            <a href="#contact" class="mobile-link text-3xl font-display font-bold text-stone-800 hover:text-emerald-700 transition-colors">Contact</a>
+            <a href="tel:9059473960" class="mt-4 px-8 py-3 bg-emerald-900 text-white text-lg font-medium rounded-full hover:bg-emerald-800 transition-all shadow-lg flex items-center gap-2">
+                <i data-lucide="phone" class="w-5 h-5"></i>
                 <span>Call Now</span>
             </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-20 px-4 sm:px-6 max-w-6xl mx-auto min-h-[90vh] flex items-center">
+    <section id="home" class="relative pt-28 md:pt-32 pb-16 md:pb-20 px-4 sm:px-6 max-w-6xl mx-auto min-h-[90vh] flex items-center">
         <!-- Animated Background Elements: Forest Colors -->
-        <div class="absolute top-20 right-0 w-96 h-96 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
-        <div class="absolute top-40 right-40 w-96 h-96 bg-lime-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-20 left-20 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000"></div>
+        <div class="absolute top-20 right-0 w-64 h-64 md:w-96 md:h-96 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
+        <div class="absolute top-40 right-40 w-64 h-64 md:w-96 md:h-96 bg-lime-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-20 left-20 w-64 h-64 md:w-96 md:h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000"></div>
 
         <div class="flex flex-col md:flex-row items-center gap-12 w-full relative z-10">
             <div class="flex-1 space-y-8">
@@ -154,29 +175,29 @@
                     </h1>
                 </div>
                 
-                <p class="text-xl text-stone-600 max-w-2xl leading-relaxed animate-fade-in-up" style="animation-delay: 0.3s;">
+                <p class="text-lg md:text-xl text-stone-600 max-w-2xl leading-relaxed animate-fade-in-up" style="animation-delay: 0.3s;">
                     Cultivating sustainable brands and high-performance digital ecosystems. 
                     Specialized in scaling operations, generating revenue, and organic growth strategies.
                 </p>
 
                 <!-- Stats -->
                 <div class="flex flex-wrap gap-4 pt-4 animate-fade-in-up" style="animation-delay: 0.4s;">
-                    <div class="flex items-center gap-3 px-6 py-4 bg-white/80 backdrop-blur-sm border border-stone-200 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                    <div class="flex-1 min-w-[140px] flex items-center gap-3 px-6 py-4 bg-white/80 backdrop-blur-sm border border-stone-200 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
                         <div class="p-2 bg-emerald-50 rounded-lg">
                             <i data-lucide="bar-chart-3" class="w-6 h-6 text-emerald-600"></i>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold font-display text-stone-900">₹4Cr+</div>
-                            <div class="text-xs text-stone-500 font-medium uppercase tracking-wider">Revenue Generated</div>
+                            <div class="text-xl md:text-2xl font-bold font-display text-stone-900">₹4Cr+</div>
+                            <div class="text-[10px] md:text-xs text-stone-500 font-medium uppercase tracking-wider">Revenue Generated</div>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3 px-6 py-4 bg-white/80 backdrop-blur-sm border border-stone-200 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                    <div class="flex-1 min-w-[140px] flex items-center gap-3 px-6 py-4 bg-white/80 backdrop-blur-sm border border-stone-200 rounded-2xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
                         <div class="p-2 bg-lime-50 rounded-lg">
                             <i data-lucide="users" class="w-6 h-6 text-lime-600"></i>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold font-display text-stone-900">4,000+</div>
-                            <div class="text-xs text-stone-500 font-medium uppercase tracking-wider">Leads Acquired</div>
+                            <div class="text-xl md:text-2xl font-bold font-display text-stone-900">4,000+</div>
+                            <div class="text-[10px] md:text-xs text-stone-500 font-medium uppercase tracking-wider">Leads Acquired</div>
                         </div>
                     </div>
                 </div>
@@ -235,11 +256,11 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-stone-50 relative">
+    <section id="experience" class="py-16 md:py-20 bg-stone-50 relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16">
                 <div>
-                    <h2 class="text-4xl font-display font-bold text-emerald-950">Professional Journey</h2>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-emerald-950">Professional Journey</h2>
                     <p class="text-stone-500 mt-3 text-lg">Leading operations & planting seeds for growth.</p>
                 </div>
             </div>
@@ -252,13 +273,13 @@
                     <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-emerald-700 text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:scale-110 transition-transform duration-300">
                         <i data-lucide="trending-up" class="w-5 h-5"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group-hover:-translate-y-1">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-stone-900">Digital Marketing Manager</h3>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 md:p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group-hover:-translate-y-1">
+                        <div class="flex flex-wrap justify-between items-start mb-2 gap-2">
+                            <h3 class="font-bold text-lg md:text-xl text-stone-900">Digital Marketing Manager</h3>
                             <span class="text-xs font-bold px-3 py-1 bg-lime-100 text-lime-800 rounded-full uppercase tracking-wide">High Impact</span>
                         </div>
                         <div class="text-base font-semibold text-emerald-700 mb-4">Eject Solutions</div>
-                        <ul class="space-y-3 text-stone-600">
+                        <ul class="space-y-3 text-stone-600 text-sm md:text-base">
                             <li class="flex gap-3 items-start">
                                 <span class="text-emerald-500 mt-1"><i data-lucide="check-circle-2" class="w-4 h-4"></i></span>
                                 <span>Generated <strong>4k+ qualified leads</strong> within just 3 months.</span>
@@ -280,12 +301,12 @@
                     <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-white border-stone-200 text-stone-500 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:border-emerald-200 group-hover:text-emerald-600 transition-colors">
                         <i data-lucide="globe" class="w-5 h-5"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group-hover:-translate-y-1">
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 md:p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group-hover:-translate-y-1">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-stone-900">Operations Lead</h3>
+                            <h3 class="font-bold text-lg md:text-xl text-stone-900">Operations Lead</h3>
                         </div>
                         <div class="text-base font-semibold text-emerald-700 mb-4">TruRoute Abroad Edu</div>
-                        <p class="text-stone-600 leading-relaxed">
+                        <p class="text-stone-600 leading-relaxed text-sm md:text-base">
                             Managed end-to-end operations for study abroad consultancy services, streamlining student processing and university partnerships.
                         </p>
                     </div>
@@ -296,13 +317,13 @@
                     <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-white border-stone-200 text-stone-500 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 group-hover:border-emerald-200 group-hover:text-emerald-600 transition-colors">
                         <i data-lucide="award" class="w-5 h-5"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group-hover:-translate-y-1">
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 md:p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-900/5 transition-all duration-300 group-hover:-translate-y-1">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-xl text-stone-900">Brand Developer</h3>
-                            <span class="text-sm font-medium text-stone-400 bg-stone-100 px-2 py-1 rounded">2023 - 2024</span>
+                            <h3 class="font-bold text-lg md:text-xl text-stone-900">Brand Developer</h3>
+                            <span class="text-xs md:text-sm font-medium text-stone-400 bg-stone-100 px-2 py-1 rounded">2023 - 2024</span>
                         </div>
                         <div class="text-base font-semibold text-emerald-700 mb-4">Int360</div>
-                        <p class="text-stone-600 leading-relaxed">
+                        <p class="text-stone-600 leading-relaxed text-sm md:text-base">
                             Spearheaded brand strategy and development initiatives, enhancing market presence and brand identity during a critical growth year.
                         </p>
                     </div>
@@ -313,11 +334,11 @@
     </section>
 
     <!-- Ventures Section -->
-    <section id="ventures" class="py-24 bg-white relative overflow-hidden">
+    <section id="ventures" class="py-16 md:py-24 bg-white relative overflow-hidden">
         <!-- Subtle leaf pattern overlay could go here -->
         <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-display font-bold text-emerald-950">Entrepreneurial Ventures</h2>
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-emerald-950">Entrepreneurial Ventures</h2>
                 <p class="text-stone-500 mt-4 max-w-2xl mx-auto text-lg">
                     Co-founding and cultivating businesses from the ground up across Food & Beverage and Personal Care.
                 </p>
@@ -391,14 +412,13 @@
     </section>
 
     <!-- Web Projects Section -->
-    <section id="projects" class="py-24 bg-stone-50">
+    <section id="projects" class="py-16 md:py-24 bg-stone-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16">
                 <div>
-                    <h2 class="text-4xl font-display font-bold text-emerald-950">Web Ecosystem</h2>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-emerald-950">Web Ecosystem</h2>
                     <p class="text-stone-500 mt-3 text-lg">10+ Digital environments deployed recently.</p>
                 </div>
-                <!-- Button removed as requested -->
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -558,7 +578,7 @@
     </section>
 
     <!-- Education & Achievements -->
-    <section id="education" class="py-24 bg-stone-50 relative overflow-hidden">
+    <section id="education" class="py-16 md:py-24 bg-stone-50 relative overflow-hidden">
         <!-- Decorator: Soft Green Blur -->
         <div class="absolute -left-20 top-40 w-80 h-80 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
 
@@ -567,17 +587,17 @@
                 <div class="p-3 bg-emerald-100 rounded-xl">
                     <i data-lucide="graduation-cap" class="w-8 h-8 text-emerald-800"></i>
                 </div>
-                <h2 class="text-4xl font-display font-bold text-emerald-950">Education & Campus Leadership</h2>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-emerald-950">Education & Campus Leadership</h2>
             </div>
 
-            <div class="bg-white rounded-3xl p-10 border border-stone-200 shadow-xl relative overflow-hidden">
+            <div class="bg-white rounded-3xl p-6 md:p-10 border border-stone-200 shadow-xl relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-stone-50 rounded-bl-full -mr-10 -mt-10 z-0"></div>
                 
                 <div class="relative z-10">
                     <div class="flex flex-col md:flex-row justify-between mb-8">
                         <div>
-                            <h3 class="text-3xl font-display font-bold text-stone-900">KL University</h3>
-                            <p class="text-emerald-700 font-medium text-lg mt-1">Specialised in Data Analytics</p>
+                            <h3 class="text-2xl md:text-3xl font-display font-bold text-stone-900">KL University</h3>
+                            <p class="text-emerald-700 font-medium text-base md:text-lg mt-1">Specialised in Data Analytics</p>
                         </div>
                         <div class="text-stone-500 mt-2 md:mt-0 font-mono text-sm bg-stone-100 px-3 py-1 rounded h-fit">2019 - 2024</div>
                     </div>
@@ -588,9 +608,9 @@
                                 <i data-lucide="radio" class="w-8 h-8 text-red-500 animate-pulse-slow"></i>
                             </div>
                             <div>
-                                <h4 class="text-xl font-bold text-stone-900 mb-1">CEO KL Radio</h4>
+                                <h4 class="text-lg md:text-xl font-bold text-stone-900 mb-1">CEO KL Radio</h4>
                                 <p class="text-sm text-stone-500 mb-4 font-medium uppercase tracking-wide">2022 - 2023</p>
-                                <p class="text-stone-700 leading-relaxed text-lg">
+                                <p class="text-stone-700 leading-relaxed text-base md:text-lg">
                                     Led the university's student radio station, managing content curation, team operations, and broadcasting strategies to engage the campus community.
                                 </p>
                             </div>
@@ -686,8 +706,29 @@
                 navbar.classList.remove('bg-transparent', 'py-6');
             } else {
                 navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm', 'py-4');
-                navbar.classList.add('bg-transparent', 'py-6');
+                navbar.classList.add('bg-transparent', 'py-6', 'md:py-6');
             }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('translate-x-full');
+            const icon = mobileMenu.classList.contains('translate-x-full') ? 'menu' : 'x';
+            // Simple icon toggle logic or re-render lucide icon
+            mobileMenuBtn.innerHTML = `<i data-lucide="${icon}" class="w-6 h-6"></i>`;
+            lucide.createIcons();
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuBtn.innerHTML = `<i data-lucide="menu" class="w-6 h-6"></i>`;
+                lucide.createIcons();
+            });
         });
     </script>
 </body>
