@@ -1,1177 +1,199 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adithya Reddy | Product Architect</title>
-    <meta name="description" content="Portfolio of Adithya Reddy - Product Architect, Marketing Strategist, and Serial Entrepreneur">
-    
-    <!-- Tailwind CSS -->
+    <title>69 Error</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <script>
-        window.onload = function() {
-            if (typeof tailwind !== 'undefined') {
-                tailwind.config = {
-                    theme: {
-                        extend: {
-                            fontFamily: {
-                                sans: ['Outfit', 'sans-serif'],
-                                display: ['Space Grotesk', 'sans-serif'],
-                            },
-                            colors: {
-                                stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 300: '#d6d3d1', 900: '#1c1917' },
-                                emerald: { 50: '#ecfdf5', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' }
-                            },
-                            animation: {
-                                'blob': "blob 12s infinite",
-                                'float': 'float 6s ease-in-out infinite',
-                                'scroll-reveal': 'reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-                                'badge-scroll': 'badgeRolesCycle 20s cubic-bezier(0.76, 0, 0.24, 1) infinite',
-                                'vertical-marquee': 'vMarquee 20s linear infinite',
-                                'horizontal-marquee': 'hMarquee 30s linear infinite',
-                                'slider-scroll': 'sliderScroll 40s linear infinite',
-                                'spin-slow': 'spin 8s linear infinite',
-                            },
-                            keyframes: {
-                                blob: {
-                                    "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
-                                    "33%": { transform: "translate(40px, -60px) scale(1.15)" },
-                                    "66%": { transform: "translate(-30px, 30px) scale(0.9)" },
-                                },
-                                float: {
-                                    '0%, 100%': { transform: 'translateY(0)' },
-                                    '50%': { transform: 'translateY(-15px)' },
-                                },
-                                reveal: {
-                                    '0%': { opacity: '0', transform: 'translateY(30px)' },
-                                    '100%': { opacity: '1', transform: 'translateY(0)' },
-                                },
-                                vMarquee: {
-                                    '0%': { transform: 'translateY(0)' },
-                                    '100%': { transform: 'translateY(-50%)' }
-                                },
-                                hMarquee: {
-                                    '0%': { transform: 'translateX(0)' },
-                                    '100%': { transform: 'translateX(-50%)' }
-                                },
-                                sliderScroll: {
-                                    '0%': { transform: 'translateX(0)' },
-                                    '100%': { transform: 'translateX(-50%)' }
-                                },
-                                /* Perfectly timed for h-8 (2rem) height items */
-                                badgeRolesCycle: {
-                                    '0%, 8%': { transform: 'translateY(0)' },
-                                    '10%, 18%': { transform: 'translateY(-2rem)' },
-                                    '20%, 28%': { transform: 'translateY(-4rem)' },
-                                    '30%, 38%': { transform: 'translateY(-6rem)' },
-                                    '40%, 48%': { transform: 'translateY(-8rem)' },
-                                    '50%, 58%': { transform: 'translateY(-10rem)' },
-                                    '60%, 68%': { transform: 'translateY(-12rem)' },
-                                    '70%, 78%': { transform: 'translateY(-14rem)' },
-                                    '80%, 100%': { transform: 'translateY(-16rem)' }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        };
-    </script>
     <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: #fafafa;
+            color: #1a1a1a;
+            overflow-x: hidden;
         }
 
-        .glass-dark {
-            background: rgba(2, 44, 34, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        /* Floating Emojis Background */
+        .emoji-bg {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+            user-select: none;
+        }
+
+        .e-1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .e-2 { bottom: 20%; left: 15%; animation-delay: -2s; font-size: 6rem; }
+        .e-3 { top: 20%; right: 10%; animation-delay: -5s; }
+        .e-4 { bottom: 10%; right: 20%; animation-delay: -7s; font-size: 5rem; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(10deg); }
+        }
+
+        /* Brutalist / Minimalist borders */
+        .brutal-box {
+            background: white;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: all 0.2s ease;
+        }
+
+        .brutal-box:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000;
         }
         
-        .reveal-hidden {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        .brutal-btn {
+            background: #000;
+            color: #fff;
+            border: 2px solid #000;
+            transition: all 0.2s ease;
         }
 
-        .reveal-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .grid-bg {
-            background-image: radial-gradient(#d6d3d1 1.5px, transparent 1.5px);
-            background-size: 32px 32px;
-        }
-
-        /* FAB Toggle State */
-        .achievement-fab .badge-window {
-            pointer-events: none;
-        }
-        
-        .achievement-fab.active .badge-window {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            pointer-events: auto;
-        }
-
-        .achievement-fab.active .fab-circle {
-            transform: scale(1.1);
-        }
-        
-        .achievement-fab.active .fab-logo {
-            transform: rotate(12deg);
-        }
-
-        /* Input styling */
-        .input-field {
-            transition: all 0.3s ease;
-        }
-        .input-field:focus {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #34d399;
+        .brutal-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 4px 4px 0px #000;
             transform: translateY(-2px);
         }
-        
-        /* Modal Animation */
-        .modal-enter {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .modal-enter .modal-content {
-            transform: scale(1);
+
+        .wiggle:hover {
+            animation: wiggle 0.5s ease-in-out infinite;
         }
 
-        /* Analysis Card Gradient */
-        .analysis-card-gradient {
-            background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
         }
-
-        /* Mask for status badge */
-        .mask-text {
-            mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-        }
-
-        /* Navbar backdrop fix - stronger opacity */
-        #navbar.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f5f5f4; }
-        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-900 antialiased selection:bg-emerald-100 selection:text-emerald-900 overflow-x-hidden">
+<body class="min-h-screen flex flex-col justify-between relative">
 
-    <!-- Global Grid Background -->
-    <div class="fixed inset-0 z-0 grid-bg opacity-40 pointer-events-none"></div>
+    <!-- Ambient Emoji Background -->
+    <div class="emoji-bg e-1">🛠️</div>
+    <div class="emoji-bg e-2">🌱</div>
+    <div class="emoji-bg e-3">💻</div>
+    <div class="emoji-bg e-4">✨</div>
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 py-6 bg-white/50 backdrop-blur-sm">
-        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-3 group cursor-pointer relative z-50">
-                <div class="w-11 h-11 bg-gradient-to-br from-emerald-800 to-teal-900 rounded-xl flex items-center justify-center text-white shadow-xl group-hover:scale-105 transition-all duration-300">
-                    <span class="font-display font-bold text-xl">A</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-display font-bold text-lg leading-tight tracking-tight text-stone-900">Adithya Reddy</span>
-                    <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">Product Architect</span>
-                </div>
-            </div>
-            
-            <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center gap-1 bg-white/80 backdrop-blur-md p-1.5 rounded-2xl border border-white/60 shadow-lg shadow-stone-200/50">
-                <a href="#home" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-stone-600 rounded-xl hover:bg-emerald-50 hover:text-emerald-800 transition-all">Home</a>
-                <a href="#experience" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-stone-600 rounded-xl hover:bg-emerald-50 hover:text-emerald-800 transition-all">Journey</a>
-                <a href="#projects" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-stone-600 rounded-xl hover:bg-emerald-50 hover:text-emerald-800 transition-all">Ecosystem</a>
-                <a href="#contact" class="ml-2 px-6 py-2.5 bg-emerald-900 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-emerald-800 hover:shadow-lg hover:shadow-emerald-900/20 transition-all transform hover:-translate-y-0.5">Let's Talk</a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden p-3 bg-white border border-stone-200 rounded-xl shadow-sm text-stone-700 z-50 relative active:scale-95 transition-transform">
-                <i data-lucide="menu" id="menu-icon"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-[90] bg-stone-50/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 md:hidden flex flex-col items-center justify-center gap-8">
-        <a href="#home" class="mobile-link text-4xl font-display font-bold text-stone-900 hover:text-emerald-700 transition-colors">Home</a>
-        <a href="#experience" class="mobile-link text-4xl font-display font-bold text-stone-900 hover:text-emerald-700 transition-colors">Journey</a>
-        <a href="#projects" class="mobile-link text-4xl font-display font-bold text-stone-900 hover:text-emerald-700 transition-colors">Ecosystem</a>
-        <a href="#contact" class="mobile-link text-4xl font-display font-bold text-emerald-600">Contact</a>
-    </div>
-
-    <!-- Hero Section (Updated Padding and Spacing) -->
-    <section id="home" class="relative min-h-screen flex items-center pt-40 md:pt-48 overflow-hidden">
-        <!-- Animated Blobs -->
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-200/40 rounded-full blur-[100px] animate-blob mix-blend-multiply"></div>
-        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-lime-200/40 rounded-full blur-[100px] animate-blob mix-blend-multiply" style="animation-delay: 4s"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-100/30 rounded-full blur-[120px] animate-blob mix-blend-multiply" style="animation-delay: 2s"></div>
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow flex flex-col items-center justify-center container mx-auto px-4 text-center max-w-3xl py-12">
         
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
-            <div class="lg:col-span-7 space-y-10 reveal-hidden" id="hero-text">
-                <!-- Status Badge (Strictly Contained) -->
-                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-lg glass-card border-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider shadow-sm hover:shadow-md transition-shadow cursor-default">
-                    <span class="relative flex h-2.5 w-2.5 shrink-0">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                    </span>
-                    <!-- Container Box: Fixed width (w-48) + overflow-hidden to prevent overlap -->
-                    <div class="h-8 w-48 overflow-hidden relative flex items-center mask-text"> 
-                        <div class="animate-badge-scroll absolute top-0 left-0 w-full">
-                            <!-- Each item matches exact 2rem (h-8) height -->
-                            <div class="h-8 flex items-center whitespace-nowrap">Available for Innovation</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Serial Entrepreneur</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Growth Architect</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Marketing Strategist</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Data Analytics Expert</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">CEO, KL Radio</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Operations Expert</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Brand Developer</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Available for Innovation</div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Status Badge -->
+        <div class="inline-block mb-8">
+            <span class="px-4 py-2 border-2 border-black bg-yellow-300 text-black font-bold text-sm tracking-wide shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                ⚠ WORK IN PROGRESS ⚠
+            </span>
+        </div>
 
-                <!-- Main Headline -->
-                <div class="space-y-4">
-                    <h1 class="text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-emerald-950 leading-[1.05]">
-                        Architecting <br>
-                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-800 animate-pulse-slow">Digital Empires.</span>
-                    </h1>
+        <!-- Title -->
+        <h1 class="text-4xl md:text-7xl font-bold mb-4 tracking-tighter hover:tracking-widest transition-all duration-500 cursor-default uppercase">
+            6996 Error
+        </h1>
+        
+        <!-- Subtitle -->
+        <h2 class="text-lg md:text-xl font-bold mb-8 text-gray-700">
+            Admin is Breaking head to fix... Lemme know who's waiting?
+        </h2>
 
-                    <p class="text-lg md:text-xl text-stone-600 max-w-xl leading-relaxed font-light">
-                        Transforming conceptual seeds into high-revenue ecosystems through precise product architecture and automated growth engines.
-                    </p>
-                </div>
+        <!-- Description -->
+        <div class="bg-white border-2 border-black p-6 mb-10 max-w-lg mx-auto shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-left">
+            <p class="mb-4 text-sm md:text-base">
+                <span class="font-bold">Status:</span> Cooking code 👨‍🍳
+            </p>
+            <p class="text-gray-600 text-sm leading-relaxed">
+                Currently refactoring reality. The pixels are being polished and the bugs are being gently escorted out.
+                <br><br>
+                Check back soon for the new adithyareddy.online experience.
+            </p>
+        </div>
 
-                <!-- CTAs -->
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})" class="group px-8 py-4 bg-emerald-900 text-white font-bold rounded-2xl shadow-xl shadow-emerald-900/20 hover:bg-emerald-800 transition-all hover:-translate-y-1 flex items-center gap-2">
-                        <span>Explore Ecosystem</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                    </button>
-                    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 bg-white text-stone-900 border border-stone-200 font-bold rounded-2xl hover:bg-stone-50 hover:border-emerald-200 transition-all hover:-translate-y-1">
-                        Start a Project
-                    </button>
-                </div>
-
-                <!-- Stats (Added Gap) -->
-                <div class="grid grid-cols-3 gap-6 pt-8 mt-12 border-t border-stone-200/60 max-w-lg">
-                    <div>
-                        <div class="text-2xl md:text-3xl font-display font-bold text-stone-900">₹2.5Cr+</div>
-                        <p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-1">& Counting</p>
-                    </div>
-                    <div>
-                        <div class="text-2xl md:text-3xl font-display font-bold text-stone-900">4k+</div>
-                        <p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-1">& Counting</p>
-                    </div>
-                    <div>
-                        <div class="text-2xl md:text-3xl font-display font-bold text-stone-900">3+</div>
-                        <p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-1">& Open to New</p>
-                    </div>
-                </div>
+        <!-- Countdown Timer -->
+        <div class="mb-4 font-bold uppercase tracking-widest text-xs">Launch Estimate</div>
+        <div class="flex justify-center gap-4 mb-12">
+            <div class="brutal-box p-4 w-20 md:w-24">
+                <div id="minutes" class="text-3xl md:text-4xl font-bold">30</div>
+                <div class="text-xs mt-1">mins</div>
             </div>
-
-            <!-- Hero Visual -->
-            <div class="lg:col-span-5 hidden lg:block reveal-hidden" style="transition-delay: 200ms">
-                <div class="relative animate-float">
-                    <div class="glass-card p-10 rounded-[3rem] shadow-2xl relative z-20 border-white/60">
-                        <div class="flex items-center gap-5 mb-10">
-                            <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-700 rounded-2xl flex items-center justify-center text-white shadow-lg">
-                                <i data-lucide="activity" class="w-8 h-8"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-xl text-stone-900">System Performance</h3>
-                                <p class="text-sm text-stone-500">Live Analytics</p>
-                            </div>
-                        </div>
-                        <div class="space-y-8">
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-end">
-                                    <span class="text-xs font-bold uppercase tracking-wider text-stone-500">Conversion Rate</span>
-                                    <span class="text-sm font-bold text-emerald-600">92%</span>
-                                </div>
-                                <div class="h-2 w-full bg-stone-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" style="width: 92%"></div>
-                                </div>
-                            </div>
-                            <div class="space-y-2">
-                                <div class="flex justify-between items-end">
-                                    <span class="text-xs font-bold uppercase tracking-wider text-stone-500">Retention</span>
-                                    <span class="text-sm font-bold text-emerald-600">84%</span>
-                                </div>
-                                <div class="h-2 w-full bg-stone-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-teal-500 rounded-full shadow-[0_0_10px_rgba(20,184,166,0.5)]" style="width: 84%"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Mini Card -->
-                            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 flex items-center gap-3 mt-4">
-                                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                                <p class="text-xs text-stone-500 font-medium">System operational and scaling...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="self-center font-bold text-2xl">:</div>
+            <div class="brutal-box p-4 w-20 md:w-24">
+                <div id="seconds" class="text-3xl md:text-4xl font-bold">00</div>
+                <div class="text-xs mt-1">secs</div>
             </div>
         </div>
-    </section>
 
-    <!-- Analysis Slider -->
-    <section class="py-12 bg-emerald-950/5 border-y border-stone-200 overflow-hidden relative">
-        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        <div class="flex w-max animate-horizontal-marquee hover:[animation-play-state:paused] gap-6 items-center px-6">
-            <!-- Analysis Cards -->
-            <div class="analysis-card-gradient w-72 p-6 rounded-2xl border border-white/40 shadow-sm flex flex-col gap-2 shrink-0">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold uppercase tracking-widest text-stone-400">Strategic Vision</span>
-                    <i data-lucide="crosshair" class="w-4 h-4 text-emerald-600"></i>
-                </div>
-                <div class="text-2xl font-display font-bold text-stone-900">High Impact</div>
-                <div class="h-1.5 w-full bg-stone-100 rounded-full overflow-hidden mt-2">
-                    <div class="h-full bg-emerald-500 w-[95%]"></div>
-                </div>
-            </div>
-             <div class="analysis-card-gradient w-72 p-6 rounded-2xl border border-white/40 shadow-sm flex flex-col gap-2 shrink-0">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold uppercase tracking-widest text-stone-400">Execution Speed</span>
-                    <i data-lucide="zap" class="w-4 h-4 text-yellow-600"></i>
-                </div>
-                <div class="text-2xl font-display font-bold text-stone-900">Rapid Deploy</div>
-                <div class="h-1.5 w-full bg-stone-100 rounded-full overflow-hidden mt-2">
-                    <div class="h-full bg-yellow-500 w-[98%]"></div>
-                </div>
-            </div>
-             <div class="analysis-card-gradient w-72 p-6 rounded-2xl border border-white/40 shadow-sm flex flex-col gap-2 shrink-0">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold uppercase tracking-widest text-stone-400">Data Driven</span>
-                    <i data-lucide="bar-chart-3" class="w-4 h-4 text-blue-600"></i>
-                </div>
-                <div class="text-2xl font-display font-bold text-stone-900">Analytical</div>
-                <div class="h-1.5 w-full bg-stone-100 rounded-full overflow-hidden mt-2">
-                    <div class="h-full bg-blue-500 w-[100%]"></div>
-                </div>
-            </div>
-             <div class="analysis-card-gradient w-72 p-6 rounded-2xl border border-white/40 shadow-sm flex flex-col gap-2 shrink-0">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold uppercase tracking-widest text-stone-400">Design Thinking</span>
-                    <i data-lucide="pen-tool" class="w-4 h-4 text-purple-600"></i>
-                </div>
-                <div class="text-2xl font-display font-bold text-stone-900">User Centric</div>
-                <div class="h-1.5 w-full bg-stone-100 rounded-full overflow-hidden mt-2">
-                    <div class="h-full bg-purple-500 w-[92%]"></div>
-                </div>
-            </div>
-            <!-- Duplicates for seamless loop -->
-             <div class="analysis-card-gradient w-72 p-6 rounded-2xl border border-white/40 shadow-sm flex flex-col gap-2 shrink-0">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold uppercase tracking-widest text-stone-400">Strategic Vision</span>
-                    <i data-lucide="crosshair" class="w-4 h-4 text-emerald-600"></i>
-                </div>
-                <div class="text-2xl font-display font-bold text-stone-900">High Impact</div>
-                <div class="h-1.5 w-full bg-stone-100 rounded-full overflow-hidden mt-2">
-                    <div class="h-full bg-emerald-500 w-[95%]"></div>
-                </div>
-            </div>
-             <div class="analysis-card-gradient w-72 p-6 rounded-2xl border border-white/40 shadow-sm flex flex-col gap-2 shrink-0">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold uppercase tracking-widest text-stone-400">Execution Speed</span>
-                    <i data-lucide="zap" class="w-4 h-4 text-yellow-600"></i>
-                </div>
-                <div class="text-2xl font-display font-bold text-stone-900">Rapid Deploy</div>
-                <div class="h-1.5 w-full bg-stone-100 rounded-full overflow-hidden mt-2">
-                    <div class="h-full bg-yellow-500 w-[98%]"></div>
-                </div>
-            </div>
-             <div class="analysis-card-gradient w-72 p-6 rounded-2xl border border-white/40 shadow-sm flex flex-col gap-2 shrink-0">
-                <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-bold uppercase tracking-widest text-stone-400">Data Driven</span>
-                    <i data-lucide="bar-chart-3" class="w-4 h-4 text-blue-600"></i>
-                </div>
-                <div class="text-2xl font-display font-bold text-stone-900">Analytical</div>
-                <div class="h-1.5 w-full bg-stone-100 rounded-full overflow-hidden mt-2">
-                    <div class="h-full bg-blue-500 w-[100%]"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Timeline (Added Scroll Margin) -->
-    <section id="experience" class="py-32 bg-stone-50 overflow-hidden relative scroll-mt-32">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="mb-20 text-center md:text-left reveal-hidden">
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-emerald-950">The Trajectory</h2>
-                <p class="text-stone-500 mt-4 text-lg">Milestones of impact and operational excellence.</p>
-            </div>
-
-            <div class="relative space-y-12 after:absolute after:inset-y-0 after:left-8 md:after:left-1/2 after:w-px after:bg-gradient-to-b after:from-transparent after:via-emerald-200 after:to-transparent">
-                
-                <!-- Timeline Item 1 -->
-                <div class="relative md:flex items-center justify-between md:odd:flex-row-reverse group reveal-hidden">
-                    <div class="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 border-4 border-stone-50 shadow-md z-10 group-hover:scale-125 transition-all duration-300"></div>
-                    <div class="ml-16 md:ml-0 md:w-[45%]">
-                        <div class="glass-card p-8 rounded-[2rem] border border-white hover:border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-[10px] font-bold px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full uppercase tracking-widest">2023 - Present</span>
-                                <i data-lucide="trending-up" class="w-5 h-5 text-emerald-300"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-stone-900 mb-1">Digital Marketing Manager</h3>
-                            <p class="text-emerald-700 font-medium mb-4 text-sm uppercase tracking-wide">Eject Solutions</p>
-                            <p class="text-stone-600 text-sm leading-relaxed mb-4">
-                                Generated <strong>₹4Cr+ revenue</strong> and captured <strong>4,000+ quality leads</strong> within 3 months using high-precision funnel architecture.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="relative md:flex items-center justify-between md:odd:flex-row-reverse group reveal-hidden">
-                     <div class="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-purple-500 border-4 border-stone-50 shadow-md z-10 group-hover:scale-125 transition-all duration-300"></div>
-                     <div class="ml-16 md:ml-0 md:w-[45%]">
-                        <div class="glass-card p-8 rounded-[2rem] border border-white hover:border-purple-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-[10px] font-bold px-3 py-1 bg-purple-100 text-purple-800 rounded-full uppercase tracking-widest">Ongoing</span>
-                                <i data-lucide="pen-tool" class="w-5 h-5 text-purple-300"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-stone-900 mb-1">Brand Developer</h3>
-                            <p class="text-purple-700 font-medium mb-4 text-sm uppercase tracking-wide">INT360 Design Studio</p>
-                            <p class="text-stone-600 text-sm leading-relaxed mb-4">
-                                Generated <strong>2k+ leads</strong> through targeted brand positioning. Orchestrated visual identity transformations and digital narratives for emerging startups.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="relative md:flex items-center justify-between md:odd:flex-row-reverse group reveal-hidden">
-                    <div class="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-emerald-200 shadow-md z-10 group-hover:bg-emerald-500 group-hover:border-stone-50 group-hover:scale-125 transition-all duration-300"></div>
-                    <div class="ml-16 md:ml-0 md:w-[45%]">
-                        <div class="glass-card p-8 rounded-[2rem] border border-white hover:border-emerald-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-[10px] font-bold px-3 py-1 bg-stone-100 text-stone-600 rounded-full uppercase tracking-widest">2021 - 2023</span>
-                                <i data-lucide="globe" class="w-5 h-5 text-stone-300"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-stone-900 mb-1">Operations Lead</h3>
-                            <p class="text-emerald-700 font-medium mb-4 text-sm uppercase tracking-wide">TruRoute Abroad Edu</p>
-                            <p class="text-stone-600 text-sm leading-relaxed mb-4">
-                                Architected end-to-end operational pipelines for international student recruitment, optimizing conversion rates by 40%.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Infinite Tech Stack Marquee -->
-    <section class="py-20 bg-stone-100 overflow-hidden border-y border-stone-200">
-        <div class="max-w-6xl mx-auto px-6 mb-10 text-center reveal-hidden">
-            <h3 class="text-sm font-bold uppercase tracking-[0.3em] text-stone-400">The Toolkit</h3>
-        </div>
-        <div class="relative w-full">
-            <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-stone-100 to-transparent z-10"></div>
-            <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-stone-100 to-transparent z-10"></div>
-            
-            <div class="flex w-max animate-horizontal-marquee hover:[animation-play-state:paused] gap-12 items-center">
-                <!-- Stack Items (Duplicated for seamless loop) -->
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="figma" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Figma</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="code-2" class="w-6 h-6"></i><span class="text-xl font-display font-bold">React</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="bar-chart-2" class="w-6 h-6"></i><span class="text-xl font-display font-bold">GA4</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="zap" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Zapier</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="database" class="w-6 h-6"></i><span class="text-xl font-display font-bold">SQL</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="layout" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Webflow</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="target" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Meta Ads</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="git-branch" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Git</span></div>
-                <!-- Duplicate -->
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="figma" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Figma</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="code-2" class="w-6 h-6"></i><span class="text-xl font-display font-bold">React</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="bar-chart-2" class="w-6 h-6"></i><span class="text-xl font-display font-bold">GA4</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="zap" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Zapier</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="database" class="w-6 h-6"></i><span class="text-xl font-display font-bold">SQL</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="layout" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Webflow</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="target" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Meta Ads</span></div>
-                <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity"><i data-lucide="git-branch" class="w-6 h-6"></i><span class="text-xl font-display font-bold">Git</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Horizontal Digital Ecosystem Section (Added Scroll Margin) -->
-    <section id="projects" class="py-32 bg-stone-50 border-b border-stone-200 overflow-hidden relative scroll-mt-32">
-        <div class="max-w-6xl mx-auto px-6 mb-12 flex justify-between items-end">
-            <div class="reveal-hidden">
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-emerald-950">Digital Ecosystem</h2>
-                <p class="text-stone-500 mt-4 text-lg">Swipe through my high-performance platforms.</p>
-            </div>
-            <div class="hidden md:flex gap-4 reveal-hidden">
-                <button onclick="scrollEcosystem(-1)" class="w-14 h-14 rounded-full border border-stone-200 bg-white flex items-center justify-center hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all shadow-sm active:scale-95">
-                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        <!-- Notify Form -->
+        <div class="max-w-md mx-auto w-full">
+            <form action="https://formspree.io/f/xnjbpdwk" method="POST" class="flex flex-col sm:flex-row gap-3">
+                <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Enter email for updates..." 
+                    class="flex-1 bg-white border-2 border-black px-4 py-3 focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all font-mono text-sm placeholder-gray-400"
+                    required
+                >
+                <button type="submit" class="brutal-btn font-bold py-3 px-6 text-sm whitespace-nowrap">
+                    NOTIFY ME 🔔
                 </button>
-                <button onclick="scrollEcosystem(1)" class="w-14 h-14 rounded-full border border-stone-200 bg-white flex items-center justify-center hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all shadow-sm active:scale-95">
-                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                </button>
-            </div>
+            </form>
         </div>
 
-        <div id="ecosystem-slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-8 px-6 md:px-[calc((100vw-72rem)/2+1.5rem)] pb-16">
-            <!-- Project 1 -->
-            <div class="min-w-[85vw] md:min-w-[500px] snap-center">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-emerald-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent"></div>
-                        <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
-                        <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="globe" class="w-10 h-10 text-emerald-600"></i>
-                        </div>
-                    </div>
-                    <div class="p-10">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-emerald-700 transition-colors">TruRoute</h3>
-                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-widest rounded-full">EdTech</span>
-                        </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Educational consultancy platform with complex lead management architecture and university search.</p>
-                        <a href="https://trurouteabroad.vercel.app" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all">Launch Platform</a>
-                    </div>
-                </div>
-            </div>
+    </main>
 
-            <!-- Project 2 -->
-            <div class="min-w-[85vw] md:min-w-[500px] snap-center">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-lime-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-lime-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-lime-500/10 to-transparent"></div>
-                         <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
-                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="users" class="w-10 h-10 text-lime-600"></i>
-                        </div>
-                    </div>
-                    <div class="p-10">
-                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-lime-700 transition-colors">Campus Trek</h3>
-                             <span class="px-3 py-1 bg-lime-100 text-lime-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Community</span>
-                        </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Engagement hub architected for pan-India student event tracking and resource sharing.</p>
-                        <a href="https://www.campustrekindia.com" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-lime-50 hover:border-lime-200 hover:text-lime-700 transition-all">Launch Platform</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="min-w-[85vw] md:min-w-[500px] snap-center">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-purple-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent"></div>
-                         <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
-                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="shopping-bag" class="w-10 h-10 text-purple-600"></i>
-                        </div>
-                    </div>
-                    <div class="p-10">
-                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-purple-700 transition-colors">Heliom</h3>
-                             <span class="px-3 py-1 bg-purple-100 text-purple-800 text-[10px] font-bold uppercase tracking-widest rounded-full">E-Commerce</span>
-                        </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">D2C Luxury E-commerce ecosystem built for Ayurvedic storytelling and sales.</p>
-                        <a href="https://heliomwellness.com" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-purple-50 hover:border-purple-200 hover:text-purple-700 transition-all">Launch Platform</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- New Full Archive Tile -->
-            <div class="min-w-[85vw] md:min-w-[500px] snap-center">
-                <div onclick="toggleArchive()" class="group h-full bg-stone-900 border border-stone-800 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-emerald-900/30 transition-all duration-700 hover:-translate-y-2 cursor-pointer relative flex flex-col justify-end">
-                     <!-- Background with Overlay -->
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-700 group-hover:scale-105 transition-transform"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/80 to-transparent"></div>
-                    
-                    <div class="relative z-10 p-10">
-                        <div class="w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-500 group-hover:border-emerald-400 group-hover:text-white transition-all duration-500 shadow-xl">
-                            <i data-lucide="layers" class="w-8 h-8 text-emerald-400 group-hover:text-white"></i>
-                        </div>
-                        <h3 class="text-3xl font-display font-bold text-white mb-2">Full Archive</h3>
-                        <p class="text-stone-400 text-sm mb-8 leading-relaxed">Explore the complete collection of 8+ deployed platforms, microsites, and growth engines.</p>
-                        <span class="inline-flex items-center gap-2 text-sm font-bold text-emerald-400 uppercase tracking-widest group-hover:gap-4 transition-all">View All Projects <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </div>
-            </div>
+    <!-- Footer -->
+    <footer class="w-full text-center py-8 bg-white/50 backdrop-blur-sm border-t-2 border-transparent">
+        <div class="flex justify-center gap-8 mb-4">
+            <a href="#" class="text-black hover:text-blue-600 text-2xl wiggle"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-black hover:text-gray-800 text-2xl wiggle"><i class="fab fa-github"></i></a>
+            <a href="#" class="text-black hover:text-blue-700 text-2xl wiggle"><i class="fab fa-linkedin"></i></a>
         </div>
-    </section>
-
-    <!-- Venture Recommendations Slider -->
-    <section class="py-32 bg-stone-50 border-b border-stone-200">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="mb-12 text-center reveal-hidden">
-                <h2 class="text-3xl md:text-4xl font-display font-bold text-emerald-950">Find Your Solution</h2>
-                <p class="text-stone-500 mt-2 text-sm uppercase tracking-widest">Tailored ventures for your specific needs</p>
-            </div>
-
-            <div class="h-48 glass-card border border-stone-200/50 rounded-[3rem] flex flex-col items-center justify-center relative overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <!-- Fade Edges for Smoothness -->
-                <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white/90 to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white/90 to-transparent z-10 pointer-events-none"></div>
-                
-                <!-- Continuous Slider -->
-                <div class="flex w-max animate-horizontal-marquee hover:[animation-play-state:paused] gap-12 items-center px-12">
-                    <!-- Items -->
-                    <div class="flex items-center gap-5 p-5 rounded-3xl border border-stone-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-default">
-                        <span class="text-lg font-display font-bold text-stone-400">Hungry?</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-300"></i>
-                        <span class="text-xl font-display font-bold text-emerald-600">Healthy Hut</span>
-                    </div>
-                    <div class="flex items-center gap-5 p-5 rounded-3xl border border-stone-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-default">
-                        <span class="text-lg font-display font-bold text-stone-400">Need Growth?</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-300"></i>
-                        <span class="text-xl font-display font-bold text-emerald-800">Eject Solutions</span>
-                    </div>
-                    <div class="flex items-center gap-5 p-5 rounded-3xl border border-stone-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-default">
-                        <span class="text-lg font-display font-bold text-stone-400">Craving Snacks?</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-300"></i>
-                        <span class="text-xl font-display font-bold text-orange-600">Tales Of Pakoda</span>
-                    </div>
-                    <div class="flex items-center gap-5 p-5 rounded-3xl border border-stone-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-default">
-                        <span class="text-lg font-display font-bold text-stone-400">Looking for Beauty?</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-300"></i>
-                        <span class="text-xl font-display font-bold text-purple-600">Heliom</span>
-                    </div>
-                    <!-- Duplicates for Seamless Loop -->
-                    <div class="flex items-center gap-5 p-5 rounded-3xl border border-stone-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-default">
-                        <span class="text-lg font-display font-bold text-stone-400">Hungry?</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-300"></i>
-                        <span class="text-xl font-display font-bold text-emerald-600">Healthy Hut</span>
-                    </div>
-                    <div class="flex items-center gap-5 p-5 rounded-3xl border border-stone-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-default">
-                        <span class="text-lg font-display font-bold text-stone-400">Need Growth?</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-300"></i>
-                        <span class="text-xl font-display font-bold text-emerald-800">Eject Solutions</span>
-                    </div>
-                    <div class="flex items-center gap-5 p-5 rounded-3xl border border-stone-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-default">
-                        <span class="text-lg font-display font-bold text-stone-400">Craving Snacks?</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-300"></i>
-                        <span class="text-xl font-display font-bold text-orange-600">Tales Of Pakoda</span>
-                    </div>
-                    <div class="flex items-center gap-5 p-5 rounded-3xl border border-stone-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-default">
-                        <span class="text-lg font-display font-bold text-stone-400">Looking for Beauty?</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5 text-emerald-300"></i>
-                        <span class="text-xl font-display font-bold text-purple-600">Heliom</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Archive Modal Overlay -->
-    <div id="archive-modal" class="fixed inset-0 z-[250] bg-stone-900/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 flex items-center justify-center">
-        <!-- Close Button -->
-        <button onclick="toggleArchive()" class="absolute top-8 right-8 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all z-50">
-            <i data-lucide="x" class="w-6 h-6"></i>
-        </button>
-
-        <div class="w-full max-w-[100vw] overflow-hidden py-20 relative">
-            <div class="container mx-auto px-6 mb-12 text-center">
-                 <span class="inline-block py-1 px-3 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[10px] font-bold uppercase tracking-widest mb-4">Portfolio Archive</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-white">All Deployed Projects</h2>
-            </div>
-            
-            <!-- Sliding Track Container -->
-            <div class="flex w-full overflow-hidden relative group">
-                <!-- Fade Edges -->
-                <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-stone-900/90 to-transparent z-20 pointer-events-none"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-stone-900/90 to-transparent z-20 pointer-events-none"></div>
-
-                <!-- Sliding Track (Doubled for seamless loop) -->
-                <div class="flex animate-slider-scroll hover:[animation-play-state:paused] w-max">
-                    <!-- Original Set -->
-                    <div class="flex gap-8 px-4">
-                         <!-- Card 1 -->
-                        <a href="https://ppsuadmissions.vercel.app/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                             <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">PPSU Admissions</h4>
-                                 <p class="text-stone-400 text-xs">University Portal</p>
-                             </div>
-                        </a>
-                        <!-- Card 2 -->
-                        <a href="https://ppsucampusvisitregistration.vercel.app/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">Campus Visit Reg.</h4>
-                                 <p class="text-stone-400 text-xs">Event Management</p>
-                             </div>
-                        </a>
-                        <!-- Card 3 -->
-                        <a href="http://heliomwellness.com/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">Heliom Wellness</h4>
-                                 <p class="text-stone-400 text-xs">D2C E-Commerce</p>
-                             </div>
-                        </a>
-                         <!-- Card 4 -->
-                        <a href="http://campustrekindia.com/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">Campus Trek India</h4>
-                                 <p class="text-stone-400 text-xs">Community Platform</p>
-                             </div>
-                        </a>
-                         <!-- Card 5 -->
-                        <a href="https://gomasters.vercel.app/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">GoMasters</h4>
-                                 <p class="text-stone-400 text-xs">EdTech Landing Page</p>
-                             </div>
-                        </a>
-                         <!-- Card 6 -->
-                        <a href="https://klradio.ejectsolutions.com/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">KL Radio</h4>
-                                 <p class="text-stone-400 text-xs">Media Streaming</p>
-                             </div>
-                        </a>
-                         <!-- Card 7 -->
-                        <a href="http://getinternships.ejectsolutions.com/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">Get Internships</h4>
-                                 <p class="text-stone-400 text-xs">Job Board</p>
-                             </div>
-                        </a>
-                         <!-- Card 8 -->
-                        <a href="https://sits-two.vercel.app/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">SITS</h4>
-                                 <p class="text-stone-400 text-xs">Institutional Website</p>
-                             </div>
-                        </a>
-                    </div>
-                    <!-- Duplicate Set for Loop -->
-                    <div class="flex gap-8 px-4">
-                        <a href="https://ppsuadmissions.vercel.app/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                             <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">PPSU Admissions</h4>
-                                 <p class="text-stone-400 text-xs">University Portal</p>
-                             </div>
-                        </a>
-                        <a href="https://ppsucampusvisitregistration.vercel.app/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">Campus Visit Reg.</h4>
-                                 <p class="text-stone-400 text-xs">Event Management</p>
-                             </div>
-                        </a>
-                        <a href="http://heliomwellness.com/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">Heliom Wellness</h4>
-                                 <p class="text-stone-400 text-xs">D2C E-Commerce</p>
-                             </div>
-                        </a>
-                        <a href="http://campustrekindia.com/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">Campus Trek India</h4>
-                                 <p class="text-stone-400 text-xs">Community Platform</p>
-                             </div>
-                        </a>
-                        <a href="https://gomasters.vercel.app/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">GoMasters</h4>
-                                 <p class="text-stone-400 text-xs">EdTech Landing Page</p>
-                             </div>
-                        </a>
-                        <a href="https://klradio.ejectsolutions.com/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">KL Radio</h4>
-                                 <p class="text-stone-400 text-xs">Media Streaming</p>
-                             </div>
-                        </a>
-                        <a href="http://getinternships.ejectsolutions.com/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">Get Internships</h4>
-                                 <p class="text-stone-400 text-xs">Job Board</p>
-                             </div>
-                        </a>
-                        <a href="https://sits-two.vercel.app/" target="_blank" class="w-[300px] md:w-[400px] aspect-[4/3] bg-stone-800 rounded-3xl border border-white/10 overflow-hidden relative group/card hover:-translate-y-2 transition-transform duration-300">
-                             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-stone-950/90"></div>
-                              <div class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover/card:opacity-100 transition-opacity"><i data-lucide="external-link" class="w-5 h-5"></i></div>
-                             <div class="absolute bottom-0 left-0 p-8">
-                                 <h4 class="text-xl font-bold text-white mb-1">SITS</h4>
-                                 <p class="text-stone-400 text-xs">Institutional Website</p>
-                             </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating Achievement FAB - H (Right) -->
-    <div id="fab-container-h" class="fixed bottom-8 right-8 z-[200] achievement-fab flex flex-col items-end gap-4">
-        <!-- Badge Scrolling Window -->
-        <div class="badge-window opacity-0 scale-95 translate-y-4 transition-all duration-500 ease-out mb-2 origin-bottom-right">
-            <div class="glass-card w-64 h-80 rounded-3xl p-5 overflow-hidden relative shadow-2xl border-emerald-500/30 flex flex-col bg-white/95">
-                <div class="flex justify-between items-center border-b border-emerald-100 pb-3 mb-3">
-                    <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-widest">HackerRank Certs</span>
-                    <button onclick="toggleFab('fab-container-h')" class="text-emerald-400 hover:text-emerald-700"><i data-lucide="x" class="w-4 h-4"></i></button>
-                </div>
-                
-                <!-- Vertical Scrolling Badges -->
-                <div class="flex-1 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white z-10 pointer-events-none opacity-50"></div>
-                    <div class="animate-vertical-marquee flex flex-col gap-3">
-                        <a href="https://www.hackerrank.com/certificates/93da427e417a" target="_blank" class="flex items-center gap-3 p-3 bg-emerald-50 rounded-xl border border-emerald-100/50 hover:bg-emerald-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-blue-500 shadow-sm"><i data-lucide="code-2" class="w-4 h-4"></i></div>
-                            <div>
-                                <div class="text-xs font-bold text-stone-800">Frontend Dev</div>
-                                <div class="text-[10px] text-stone-500">React (ID: 93DA...)</div>
-                            </div>
-                        </a>
-                        <a href="https://www.hackerrank.com/certificates/f4025398a310" target="_blank" class="flex items-center gap-3 p-3 bg-emerald-50 rounded-xl border border-emerald-100/50 hover:bg-emerald-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-yellow-500 shadow-sm"><i data-lucide="file-code" class="w-4 h-4"></i></div>
-                            <div>
-                                <div class="text-xs font-bold text-stone-800">Python</div>
-                                <div class="text-[10px] text-stone-500">Basic (ID: F402...)</div>
-                            </div>
-                        </a>
-                        <!-- Duplicates for loop -->
-                        <a href="https://www.hackerrank.com/certificates/93da427e417a" target="_blank" class="flex items-center gap-3 p-3 bg-emerald-50 rounded-xl border border-emerald-100/50 hover:bg-emerald-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-blue-500 shadow-sm"><i data-lucide="code-2" class="w-4 h-4"></i></div>
-                            <div>
-                                <div class="text-xs font-bold text-stone-800">Frontend Dev</div>
-                                <div class="text-[10px] text-stone-500">React</div>
-                            </div>
-                        </a>
-                        <a href="https://www.hackerrank.com/certificates/f4025398a310" target="_blank" class="flex items-center gap-3 p-3 bg-emerald-50 rounded-xl border border-emerald-100/50 hover:bg-emerald-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-yellow-500 shadow-sm"><i data-lucide="file-code" class="w-4 h-4"></i></div>
-                            <div>
-                                <div class="text-xs font-bold text-stone-800">Python</div>
-                                <div class="text-[10px] text-stone-500">Basic</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- HackerRank Link -->
-                <a href="https://www.hackerrank.com/certificates/93da427e417a" target="_blank" class="mt-3 bg-emerald-950 text-white py-3 rounded-xl text-center text-[10px] font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-emerald-800 transition-colors">
-                    Verify Certs <i data-lucide="external-link" class="w-3 h-3"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- The "H" Circle Button -->
-        <button onclick="toggleFab('fab-container-h')" class="fab-circle w-16 h-16 bg-emerald-950 rounded-full flex items-center justify-center text-white shadow-2xl shadow-emerald-900/40 relative overflow-hidden transition-all duration-300">
-            <!-- Animated Background -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-emerald-600 to-teal-400 opacity-0 transition-opacity duration-300 toggle-bg"></div>
-            <div class="absolute inset-0 border-2 border-emerald-400/50 rounded-full animate-spin-slow"></div>
-            <!-- The H Logo -->
-            <span class="fab-logo relative z-10 text-3xl font-display font-black transition-transform duration-300">H</span>
-        </button>
-    </div>
-
-    <!-- Floating Achievement FAB - B (Left) -->
-    <div id="fab-container-b" class="fixed bottom-8 left-8 z-[200] achievement-fab flex flex-col items-start gap-4">
-        <!-- Badge Scrolling Window -->
-        <div class="badge-window opacity-0 scale-95 translate-y-4 transition-all duration-500 ease-out mb-2 origin-bottom-left">
-            <div class="glass-card w-64 h-80 rounded-3xl p-5 overflow-hidden relative shadow-2xl border-stone-500/30 flex flex-col bg-white/95">
-                <div class="flex justify-between items-center border-b border-stone-200 pb-3 mb-3">
-                    <span class="text-[10px] font-bold text-stone-800 uppercase tracking-widest">Live Websites</span>
-                    <button onclick="toggleFab('fab-container-b')" class="text-stone-400 hover:text-stone-700"><i data-lucide="x" class="w-4 h-4"></i></button>
-                </div>
-                
-                <!-- Vertical Scrolling Websites -->
-                <div class="flex-1 overflow-hidden relative">
-                    <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white z-10 pointer-events-none opacity-50"></div>
-                    <div class="animate-vertical-marquee flex flex-col gap-3">
-                        <a href="https://ppsuadmissions.vercel.app/" target="_blank" class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200/50 hover:bg-stone-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-stone-600 shadow-sm"><i data-lucide="globe" class="w-4 h-4"></i></div>
-                            <div class="truncate">
-                                <div class="text-xs font-bold text-stone-800 truncate">PPSU Admissions</div>
-                                <div class="text-[10px] text-stone-500">Portal</div>
-                            </div>
-                        </a>
-                        <a href="http://heliomwellness.com/" target="_blank" class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200/50 hover:bg-stone-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-purple-600 shadow-sm"><i data-lucide="shopping-bag" class="w-4 h-4"></i></div>
-                            <div class="truncate">
-                                <div class="text-xs font-bold text-stone-800 truncate">Heliom Wellness</div>
-                                <div class="text-[10px] text-stone-500">D2C</div>
-                            </div>
-                        </a>
-                        <a href="https://gomasters.vercel.app/" target="_blank" class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200/50 hover:bg-stone-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-orange-600 shadow-sm"><i data-lucide="layout" class="w-4 h-4"></i></div>
-                            <div class="truncate">
-                                <div class="text-xs font-bold text-stone-800 truncate">GoMasters</div>
-                                <div class="text-[10px] text-stone-500">EdTech</div>
-                            </div>
-                        </a>
-                        <a href="https://klradio.ejectsolutions.com/" target="_blank" class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200/50 hover:bg-stone-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-red-600 shadow-sm"><i data-lucide="radio" class="w-4 h-4"></i></div>
-                            <div class="truncate">
-                                <div class="text-xs font-bold text-stone-800 truncate">KL Radio</div>
-                                <div class="text-[10px] text-stone-500">Media</div>
-                            </div>
-                        </a>
-                         <!-- Duplicates for loop -->
-                        <a href="https://ppsuadmissions.vercel.app/" target="_blank" class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200/50 hover:bg-stone-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-stone-600 shadow-sm"><i data-lucide="globe" class="w-4 h-4"></i></div>
-                            <div class="truncate">
-                                <div class="text-xs font-bold text-stone-800 truncate">PPSU Admissions</div>
-                                <div class="text-[10px] text-stone-500">Portal</div>
-                            </div>
-                        </a>
-                        <a href="http://heliomwellness.com/" target="_blank" class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200/50 hover:bg-stone-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-purple-600 shadow-sm"><i data-lucide="shopping-bag" class="w-4 h-4"></i></div>
-                            <div class="truncate">
-                                <div class="text-xs font-bold text-stone-800 truncate">Heliom Wellness</div>
-                                <div class="text-[10px] text-stone-500">D2C</div>
-                            </div>
-                        </a>
-                        <a href="https://gomasters.vercel.app/" target="_blank" class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200/50 hover:bg-stone-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-orange-600 shadow-sm"><i data-lucide="layout" class="w-4 h-4"></i></div>
-                            <div class="truncate">
-                                <div class="text-xs font-bold text-stone-800 truncate">GoMasters</div>
-                                <div class="text-[10px] text-stone-500">EdTech</div>
-                            </div>
-                        </a>
-                        <a href="https://klradio.ejectsolutions.com/" target="_blank" class="flex items-center gap-3 p-3 bg-stone-50 rounded-xl border border-stone-200/50 hover:bg-stone-100 transition-colors">
-                            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-red-600 shadow-sm"><i data-lucide="radio" class="w-4 h-4"></i></div>
-                            <div class="truncate">
-                                <div class="text-xs font-bold text-stone-800 truncate">KL Radio</div>
-                                <div class="text-[10px] text-stone-500">Media</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- The "B" Circle Button -->
-        <button onclick="toggleFab('fab-container-b')" class="fab-circle w-16 h-16 bg-stone-900 rounded-full flex items-center justify-center text-white shadow-2xl shadow-stone-900/40 relative overflow-hidden transition-all duration-300">
-            <!-- Animated Background -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-stone-600 to-stone-400 opacity-0 transition-opacity duration-300 toggle-bg"></div>
-            <div class="absolute inset-0 border-2 border-stone-400/50 rounded-full animate-spin-slow"></div>
-            <!-- The B Logo -->
-            <span class="fab-logo relative z-10 text-3xl font-display font-black transition-transform duration-300">B</span>
-        </button>
-    </div>
-
-    <!-- Contact / Footer -->
-    <footer id="contact" class="bg-[#022c22] text-white py-32 relative overflow-hidden scroll-mt-32">
-        <!-- Background Gradients -->
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-900/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-900/20 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
-
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <!-- Text Side -->
-                <div class="space-y-10 reveal-hidden">
-                    <h2 class="text-5xl md:text-7xl font-display font-bold leading-tight">
-                        Let's build <br> something <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">extraordinary.</span>
-                    </h2>
-                    <p class="text-emerald-100/60 text-lg max-w-md">
-                        Have an idea? Let's discuss how we can architect your next big growth phase.
-                    </p>
-                    
-                    <div class="flex flex-col gap-6 pt-4">
-                        <div class="flex flex-col gap-1">
-                            <span class="text-xs font-bold uppercase tracking-widest text-emerald-500/50">Email</span>
-                            <a href="mailto:adithyareddy639@gmail.com" class="text-xl font-display font-bold hover:text-emerald-400 transition-colors break-all">adithyareddy639@gmail.com</a>
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <span class="text-xs font-bold uppercase tracking-widest text-emerald-500/50">WhatsApp</span>
-                            <a href="https://wa.me/919059473960" target="_blank" class="text-xl font-display font-bold hover:text-emerald-400 transition-colors flex items-center gap-2">
-                                <i data-lucide="message-circle" class="w-5 h-5"></i>
-                                +91 90594 73960
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form Side -->
-                <div class="reveal-hidden">
-                    <div class="glass-dark p-8 md:p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-8 opacity-20"><i data-lucide="send" class="w-24 h-24 text-white"></i></div>
-                        
-                        <form onsubmit="event.preventDefault(); alert('Message Sent! I will get back to you shortly.');" class="relative z-10 space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="space-y-2">
-                                    <label class="text-xs font-bold uppercase tracking-widest text-emerald-400 ml-2">Name</label>
-                                    <input type="text" class="input-field w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white placeholder-white/20 focus:outline-none" placeholder="John Doe" required>
-                                </div>
-                                <div class="space-y-2">
-                                    <label class="text-xs font-bold uppercase tracking-widest text-emerald-400 ml-2">Email</label>
-                                    <input type="email" class="input-field w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white placeholder-white/20 focus:outline-none" placeholder="john@example.com" required>
-                                </div>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-emerald-400 ml-2">Project Details</label>
-                                <textarea rows="4" class="input-field w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white placeholder-white/20 focus:outline-none resize-none" placeholder="Tell me about your vision..."></textarea>
-                            </div>
-                            <button type="submit" class="w-full py-5 bg-white text-emerald-950 font-bold rounded-2xl hover:bg-emerald-50 transition-all transform hover:-translate-y-1 shadow-lg shadow-black/20 flex items-center justify-center gap-2">
-                                Send Message <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-100/30">
-                <p>© 2026 Adithya Reddy • Built for Performance</p>
-                <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span><span>Wanderer Ecosystem</span></div>
-            </div>
-        </div>
+        <p class="text-[11px] text-gray-500 uppercase tracking-widest">
+            © 2026 Adithya Reddy // All Rights Reserved
+        </p>
     </footer>
 
     <script>
-        lucide.createIcons();
-
-        // Ecosystem Scroll Function
-        function scrollEcosystem(direction) {
-            const slider = document.getElementById('ecosystem-slider');
-            const scrollAmount = 500;
-            slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-        }
+        // Set countdown for 30 minutes from NOW
+        // To make it persist across reloads in a real app, you'd save 'targetTime' to localStorage.
+        // For this demo, we reset to 30 mins on load.
         
-        // Archive Modal Toggle
-        function toggleArchive() {
-            const modal = document.getElementById('archive-modal');
-            if (modal.classList.contains('opacity-0')) {
-                // Open
-                modal.classList.remove('opacity-0', 'pointer-events-none');
-                modal.classList.add('modal-enter');
-                document.body.style.overflow = 'hidden';
-                // Re-init icons inside modal just in case
-                lucide.createIcons();
-            } else {
-                // Close
-                modal.classList.add('opacity-0', 'pointer-events-none');
-                modal.classList.remove('modal-enter');
-                document.body.style.overflow = '';
-            }
-        }
-
-        // FAB Toggle Function
-        function toggleFab(fabId) {
-            const fab = document.getElementById(fabId);
-            const bg = fab.querySelector('.toggle-bg');
-            
-            fab.classList.toggle('active');
-            
-            if (fab.classList.contains('active')) {
-                bg.classList.remove('opacity-0');
-            } else {
-                bg.classList.add('opacity-0');
-            }
-        }
-
-        // Close FABs when clicking outside
-        document.addEventListener('click', function(event) {
-            const fabIds = ['fab-container-h', 'fab-container-b'];
-            
-            fabIds.forEach(id => {
-                const fab = document.getElementById(id);
-                if (fab && !fab.contains(event.target) && fab.classList.contains('active')) {
-                    toggleFab(id);
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled', 'py-4');
-                nav.classList.remove('py-6');
-            } else {
-                nav.classList.remove('scrolled', 'py-4');
-                nav.classList.add('py-6');
-            }
-        });
-
-        // Intersection Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.reveal-hidden').forEach(el => observer.observe(el));
+        let targetDate;
         
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        let isMenuOpen = false;
+        const savedTime = localStorage.getItem('adithya_countdown_target');
+        if (savedTime && new Date(savedTime) > new Date()) {
+             targetDate = new Date(savedTime);
+        } else {
+             targetDate = new Date();
+             targetDate.setMinutes(targetDate.getMinutes() + 30);
+             localStorage.setItem('adithya_countdown_target', targetDate);
+        }
 
-        menuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            menu.classList.toggle('translate-x-full');
-            if (isMenuOpen) {
-                menuIcon.setAttribute('data-lucide', 'x');
-                document.body.style.overflow = 'hidden';
-            } else {
-                menuIcon.setAttribute('data-lucide', 'menu');
-                document.body.style.overflow = '';
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                // When time is up
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                localStorage.removeItem('adithya_countdown_target'); // Reset for next time
+                return;
             }
-            lucide.createIcons();
-        });
 
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                isMenuOpen = false;
-                menu.classList.add('translate-x-full');
-                menuIcon.setAttribute('data-lucide', 'menu');
-                document.body.style.overflow = '';
-                lucide.createIcons();
-            });
-        });
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 </html>
