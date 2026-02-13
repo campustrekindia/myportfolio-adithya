@@ -36,6 +36,7 @@
                                 'badge-scroll': 'badgeRolesCycle 20s cubic-bezier(0.76, 0, 0.24, 1) infinite',
                                 'vertical-marquee': 'vMarquee 20s linear infinite',
                                 'horizontal-marquee': 'hMarquee 30s linear infinite',
+                                'ecosystem-scroll': 'hMarquee 60s linear infinite', /* Slower for card readability */
                                 'slider-scroll': 'sliderScroll 40s linear infinite',
                                 'spin-slow': 'spin 8s linear infinite',
                                 'emoji-float': 'emojiFloat 1.5s ease-out forwards',
@@ -66,7 +67,6 @@
                                     '0%': { transform: 'translateX(0)' },
                                     '100%': { transform: 'translateX(-50%)' }
                                 },
-                                /* Perfectly timed for h-8 (2rem) height items */
                                 badgeRolesCycle: {
                                     '0%, 8%': { transform: 'translateY(0)' },
                                     '10%, 18%': { transform: 'translateY(-2rem)' },
@@ -168,13 +168,13 @@
             background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
         }
 
-        /* Mask for status badge - VERTICAL FADE to prevent letter cutoff */
+        /* Mask for status badge - VERTICAL FADE */
         .mask-text {
             mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
         }
 
-        /* Navbar backdrop fix - stronger opacity */
+        /* Navbar backdrop fix */
         #navbar.scrolled {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(16px);
@@ -245,7 +245,7 @@
         
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
             <div class="lg:col-span-7 space-y-8 md:space-y-10 reveal-hidden" id="hero-text">
-                <!-- Status Badge -->
+                <!-- Status Badge (FIXED: Vertical Mask) -->
                 <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-card border-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider shadow-sm hover:shadow-md transition-shadow cursor-default z-20 relative">
                     <span class="relative flex h-2.5 w-2.5 shrink-0">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -254,15 +254,15 @@
                     <!-- Container Box: Fixed height & width, Vertical Mask -->
                     <div class="h-8 w-48 overflow-hidden relative flex items-center mask-text pl-1"> 
                         <div class="animate-badge-scroll absolute top-0 left-0 w-full text-center">
-                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Available for Innovation</div>
-                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Serial Entrepreneur</div>
-                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Growth Architect</div>
-                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Marketing Strategist</div>
-                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Data Analytics Expert</div>
-                            <div class="h-8 flex items-center justify-center whitespace-nowrap">CEO, KL Radio</div>
-                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Operations Expert</div>
-                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Brand Developer</div>
-                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Available for Innovation</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap leading-8">Available for Innovation</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap leading-8">Serial Entrepreneur</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap leading-8">Growth Architect</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap leading-8">Marketing Strategist</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap leading-8">Data Analytics Expert</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap leading-8">CEO, KL Radio</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap leading-8">Operations Expert</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap leading-8">Brand Developer</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap leading-8">Available for Innovation</div>
                         </div>
                     </div>
                 </div>
@@ -547,188 +547,191 @@
                 <h2 class="text-4xl md:text-5xl font-display font-bold text-emerald-950">Digital Ecosystem</h2>
                 <p class="text-stone-500 mt-4 text-lg">Swipe through my high-performance platforms.</p>
             </div>
-            <div class="hidden md:flex gap-4 reveal-hidden">
-                <button onclick="scrollEcosystem(-1)" class="w-14 h-14 rounded-full border border-stone-200 bg-white flex items-center justify-center hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all shadow-sm active:scale-95">
-                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                </button>
-                <button onclick="scrollEcosystem(1)" class="w-14 h-14 rounded-full border border-stone-200 bg-white flex items-center justify-center hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all shadow-sm active:scale-95">
-                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                </button>
-            </div>
+            <!-- Hidden controls because it's auto-scroll now, user can touch to pause -->
         </div>
 
-        <div id="ecosystem-slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-6 md:gap-8 px-6 md:px-[calc((100vw-72rem)/2+1.5rem)] pb-16">
-            <!-- Project Cards Loop -->
-            <div class="w-[85vw] md:w-[500px] snap-center shrink-0">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-emerald-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent"></div>
-                        <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
-                        <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="globe" class="w-10 h-10 text-emerald-600"></i>
+        <!-- Auto-Scrolling Marquee for Projects -->
+        <div class="relative w-full overflow-hidden">
+            <div class="flex w-max animate-ecosystem-scroll hover:[animation-play-state:paused] active:[animation-play-state:paused] gap-6 md:gap-8 px-6 pb-16">
+                <!-- Project Cards Loop -->
+                <div class="w-[85vw] md:w-[500px] shrink-0">
+                    <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="aspect-[16/9] bg-emerald-50 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent"></div>
+                            <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
+                            <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
+                                <i data-lucide="globe" class="w-10 h-10 text-emerald-600"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-8 md:p-10">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-emerald-700 transition-colors">TruRoute</h3>
-                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-widest rounded-full">EdTech</span>
+                        <div class="p-8 md:p-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-3xl font-display font-bold group-hover:text-emerald-700 transition-colors">TruRoute</h3>
+                                <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-widest rounded-full">EdTech</span>
+                            </div>
+                            <p class="text-stone-500 text-sm mb-8 leading-relaxed">Educational consultancy platform with complex lead management architecture.</p>
+                            <a href="https://trurouteabroad.vercel.app" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all">Launch Platform</a>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Educational consultancy platform with complex lead management architecture.</p>
-                        <a href="https://trurouteabroad.vercel.app" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="w-[85vw] md:w-[500px] snap-center shrink-0">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-lime-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-lime-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-lime-500/10 to-transparent"></div>
-                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="users" class="w-10 h-10 text-lime-600"></i>
+                
+                <div class="w-[85vw] md:w-[500px] shrink-0">
+                    <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-lime-900/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="aspect-[16/9] bg-lime-50 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-lime-500/10 to-transparent"></div>
+                            <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
+                            <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
+                                <i data-lucide="users" class="w-10 h-10 text-lime-600"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-8 md:p-10">
-                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-lime-700 transition-colors">Campus Trek</h3>
-                             <span class="px-3 py-1 bg-lime-100 text-lime-800 text-[10px] font-bold uppercase tracking-widest rounded-full">R&D</span>
+                        <div class="p-8 md:p-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-3xl font-display font-bold group-hover:text-lime-700 transition-colors">Campus Trek</h3>
+                                <span class="px-3 py-1 bg-lime-100 text-lime-800 text-[10px] font-bold uppercase tracking-widest rounded-full">R&D</span>
+                            </div>
+                            <p class="text-stone-500 text-sm mb-8 leading-relaxed">Engagement hub architected for pan-India student event tracking and resource sharing.</p>
+                            <a href="https://www.campustrekindia.com" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-lime-50 hover:border-lime-200 hover:text-lime-700 transition-all">Launch Platform</a>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Engagement hub architected for pan-India student event tracking and resource sharing.</p>
-                        <a href="https://www.campustrekindia.com" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-lime-50 hover:border-lime-200 hover:text-lime-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="w-[85vw] md:w-[500px] snap-center shrink-0">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-purple-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent"></div>
-                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="shopping-bag" class="w-10 h-10 text-purple-600"></i>
+                
+                <div class="w-[85vw] md:w-[500px] shrink-0">
+                    <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="aspect-[16/9] bg-purple-50 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent"></div>
+                            <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
+                            <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
+                                <i data-lucide="shopping-bag" class="w-10 h-10 text-purple-600"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-8 md:p-10">
-                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-purple-700 transition-colors">Heliom</h3>
-                             <span class="px-3 py-1 bg-purple-100 text-purple-800 text-[10px] font-bold uppercase tracking-widest rounded-full">E-Commerce</span>
+                        <div class="p-8 md:p-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-3xl font-display font-bold group-hover:text-purple-700 transition-colors">Heliom</h3>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-800 text-[10px] font-bold uppercase tracking-widest rounded-full">E-Commerce</span>
+                            </div>
+                            <p class="text-stone-500 text-sm mb-8 leading-relaxed">D2C Luxury E-commerce ecosystem built for Ayurvedic storytelling and sales.</p>
+                            <a href="https://heliomwellness.com" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-purple-50 hover:border-purple-200 hover:text-purple-700 transition-all">Launch Platform</a>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">D2C Luxury E-commerce ecosystem built for Ayurvedic storytelling and sales.</p>
-                        <a href="https://heliomwellness.com" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-purple-50 hover:border-purple-200 hover:text-purple-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
-            </div>
 
-            <!-- Other Projects -->
-            <div class="w-[85vw] md:w-[500px] snap-center shrink-0">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-blue-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent"></div>
-                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="graduation-cap" class="w-10 h-10 text-blue-600"></i>
+                <!-- Other Projects -->
+                <div class="w-[85vw] md:w-[500px] shrink-0">
+                    <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="aspect-[16/9] bg-blue-50 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent"></div>
+                            <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
+                            <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
+                                <i data-lucide="graduation-cap" class="w-10 h-10 text-blue-600"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-8 md:p-10">
-                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-blue-700 transition-colors">PPSU Admissions</h3>
-                             <span class="px-3 py-1 bg-blue-100 text-blue-800 text-[10px] font-bold uppercase tracking-widest rounded-full">University</span>
+                        <div class="p-8 md:p-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-3xl font-display font-bold group-hover:text-blue-700 transition-colors">PPSU Admissions</h3>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 text-[10px] font-bold uppercase tracking-widest rounded-full">University</span>
+                            </div>
+                            <p class="text-stone-500 text-sm mb-8 leading-relaxed">Streamlined university admission portal optimizing student enrollment.</p>
+                            <a href="https://ppsuadmissions.vercel.app/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all">Launch Platform</a>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Streamlined university admission portal optimizing student enrollment.</p>
-                        <a href="https://ppsuadmissions.vercel.app/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
-            </div>
 
-            <div class="w-[85vw] md:w-[500px] snap-center shrink-0">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-orange-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-orange-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent"></div>
-                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="layout" class="w-10 h-10 text-orange-600"></i>
+                <div class="w-[85vw] md:w-[500px] shrink-0">
+                    <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-orange-900/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="aspect-[16/9] bg-orange-50 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent"></div>
+                            <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
+                            <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
+                                <i data-lucide="layout" class="w-10 h-10 text-orange-600"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-8 md:p-10">
-                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-orange-700 transition-colors">GoMasters</h3>
-                             <span class="px-3 py-1 bg-orange-100 text-orange-800 text-[10px] font-bold uppercase tracking-widest rounded-full">EdTech</span>
+                        <div class="p-8 md:p-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-3xl font-display font-bold group-hover:text-orange-700 transition-colors">GoMasters</h3>
+                                <span class="px-3 py-1 bg-orange-100 text-orange-800 text-[10px] font-bold uppercase tracking-widest rounded-full">EdTech</span>
+                            </div>
+                            <p class="text-stone-500 text-sm mb-8 leading-relaxed">High-conversion landing page for specialized master's programs.</p>
+                            <a href="https://gomasters.vercel.app/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-orange-50 hover:border-orange-200 hover:text-orange-700 transition-all">Launch Platform</a>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">High-conversion landing page for specialized master's programs.</p>
-                        <a href="https://gomasters.vercel.app/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-orange-50 hover:border-orange-200 hover:text-orange-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
-            </div>
 
-            <div class="w-[85vw] md:w-[500px] snap-center shrink-0">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-red-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-red-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent"></div>
-                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="radio" class="w-10 h-10 text-red-600"></i>
+                <div class="w-[85vw] md:w-[500px] shrink-0">
+                    <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-red-900/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="aspect-[16/9] bg-red-50 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent"></div>
+                            <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1478737270239-2f02b77ac6d5?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
+                            <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
+                                <i data-lucide="radio" class="w-10 h-10 text-red-600"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-8 md:p-10">
-                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-red-700 transition-colors">KL Radio</h3>
-                             <span class="px-3 py-1 bg-red-100 text-red-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Media</span>
+                        <div class="p-8 md:p-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-3xl font-display font-bold group-hover:text-red-700 transition-colors">KL Radio</h3>
+                                <span class="px-3 py-1 bg-red-100 text-red-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Media</span>
+                            </div>
+                            <p class="text-stone-500 text-sm mb-8 leading-relaxed">Official digital radio streaming platform for KL University.</p>
+                            <a href="https://klradio.ejectsolutions.com/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-red-50 hover:border-red-200 hover:text-red-700 transition-all">Launch Platform</a>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Official digital radio streaming platform for KL University.</p>
-                        <a href="https://klradio.ejectsolutions.com/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-red-50 hover:border-red-200 hover:text-red-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
-            </div>
 
-             <div class="w-[85vw] md:w-[500px] snap-center shrink-0">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-teal-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-teal-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent"></div>
-                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="briefcase" class="w-10 h-10 text-teal-600"></i>
+                <div class="w-[85vw] md:w-[500px] shrink-0">
+                    <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-teal-900/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="aspect-[16/9] bg-teal-50 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent"></div>
+                            <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
+                            <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
+                                <i data-lucide="briefcase" class="w-10 h-10 text-teal-600"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-8 md:p-10">
-                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-teal-700 transition-colors">Get Internships</h3>
-                             <span class="px-3 py-1 bg-teal-100 text-teal-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Jobs</span>
+                        <div class="p-8 md:p-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-3xl font-display font-bold group-hover:text-teal-700 transition-colors">Get Internships</h3>
+                                <span class="px-3 py-1 bg-teal-100 text-teal-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Jobs</span>
+                            </div>
+                            <p class="text-stone-500 text-sm mb-8 leading-relaxed">Job board connecting students with opportunities.</p>
+                            <a href="http://getinternships.ejectsolutions.com/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-teal-50 hover:border-teal-200 hover:text-teal-700 transition-all">Launch Platform</a>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Job board connecting students with opportunities.</p>
-                        <a href="http://getinternships.ejectsolutions.com/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-teal-50 hover:border-teal-200 hover:text-teal-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
-            </div>
 
-             <div class="w-[85vw] md:w-[500px] snap-center shrink-0">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-stone-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-stone-100 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-stone-500/10 to-transparent"></div>
-                         <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="building-2" class="w-10 h-10 text-stone-600"></i>
+                <div class="w-[85vw] md:w-[500px] shrink-0">
+                    <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-stone-900/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="aspect-[16/9] bg-stone-100 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-stone-500/10 to-transparent"></div>
+                            <div class="w-full h-full absolute top-0 left-0 bg-[url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-20 group-hover:scale-110 transition-transform duration-1000"></div>
+                            <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
+                                <i data-lucide="building-2" class="w-10 h-10 text-stone-600"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-8 md:p-10">
-                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-stone-700 transition-colors">SITS</h3>
-                             <span class="px-3 py-1 bg-stone-200 text-stone-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Institution</span>
+                        <div class="p-8 md:p-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-3xl font-display font-bold group-hover:text-stone-700 transition-colors">SITS</h3>
+                                <span class="px-3 py-1 bg-stone-200 text-stone-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Institution</span>
+                            </div>
+                            <p class="text-stone-500 text-sm mb-8 leading-relaxed">Official website for SITS institution.</p>
+                            <a href="https://sits-two.vercel.app/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-stone-50 hover:border-stone-400 hover:text-stone-800 transition-all">Launch Platform</a>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Official website for SITS institution.</p>
-                        <a href="https://sits-two.vercel.app/" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-stone-50 hover:border-stone-400 hover:text-stone-800 transition-all">Launch Platform</a>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Duplicates for Loop -->
-             <div class="w-[85vw] md:w-[500px] snap-center shrink-0">
-                <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-700 hover:-translate-y-2">
-                    <div class="aspect-[16/9] bg-emerald-50 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent"></div>
-                        <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
-                             <i data-lucide="globe" class="w-10 h-10 text-emerald-600"></i>
+                
+                <!-- Duplicates for Loop -->
+                 <div class="w-[85vw] md:w-[500px] shrink-0">
+                    <div class="group h-full bg-white border border-stone-200 rounded-[3rem] overflow-hidden hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-700 hover:-translate-y-2">
+                        <div class="aspect-[16/9] bg-emerald-50 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent"></div>
+                            <div class="w-20 h-20 bg-white rounded-3xl flex items-center justify-center shadow-lg relative z-10 group-hover:rotate-12 transition-transform duration-500">
+                                 <i data-lucide="globe" class="w-10 h-10 text-emerald-600"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-8 md:p-10">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-3xl font-display font-bold group-hover:text-emerald-700 transition-colors">TruRoute</h3>
-                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-widest rounded-full">EdTech</span>
+                        <div class="p-8 md:p-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-3xl font-display font-bold group-hover:text-emerald-700 transition-colors">TruRoute</h3>
+                                <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-widest rounded-full">EdTech</span>
+                            </div>
+                            <p class="text-stone-500 text-sm mb-8 leading-relaxed">Educational consultancy platform with complex lead management architecture.</p>
+                            <a href="https://trurouteabroad.vercel.app" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all">Launch Platform</a>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Educational consultancy platform with complex lead management architecture.</p>
-                        <a href="https://trurouteabroad.vercel.app" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
             </div>
@@ -1120,24 +1123,6 @@
             slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
         
-        // Archive Modal Toggle
-        function toggleArchive() {
-            const modal = document.getElementById('archive-modal');
-            if (modal.classList.contains('opacity-0')) {
-                // Open
-                modal.classList.remove('opacity-0', 'pointer-events-none');
-                modal.classList.add('modal-enter');
-                document.body.style.overflow = 'hidden';
-                // Re-init icons inside modal just in case
-                lucide.createIcons();
-            } else {
-                // Close
-                modal.classList.add('opacity-0', 'pointer-events-none');
-                modal.classList.remove('modal-enter');
-                document.body.style.overflow = '';
-            }
-        }
-
         // FAB Toggle Function
         function toggleFab(fabId) {
             const fab = document.getElementById(fabId);
