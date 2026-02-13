@@ -66,6 +66,7 @@
                                     '0%': { transform: 'translateX(0)' },
                                     '100%': { transform: 'translateX(-50%)' }
                                 },
+                                /* Perfectly timed for h-8 (2rem) height items */
                                 badgeRolesCycle: {
                                     '0%, 8%': { transform: 'translateY(0)' },
                                     '10%, 18%': { transform: 'translateY(-2rem)' },
@@ -167,7 +168,7 @@
             background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
         }
 
-        /* Mask for status badge - VERTICAL FADE ONLY */
+        /* Mask for status badge - VERTICAL FADE to prevent letter cutoff */
         .mask-text {
             mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
@@ -250,18 +251,18 @@
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                     </span>
-                    <!-- Container Box: Fixed height & width, Overflow hidden -->
+                    <!-- Container Box: Fixed height & width, Vertical Mask -->
                     <div class="h-8 w-48 overflow-hidden relative flex items-center mask-text pl-1"> 
-                        <div class="animate-badge-scroll absolute top-0 left-0 w-full">
-                            <div class="h-8 flex items-center whitespace-nowrap">Available for Innovation</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Serial Entrepreneur</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Growth Architect</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Marketing Strategist</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Data Analytics Expert</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">CEO, KL Radio</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Operations Expert</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Brand Developer</div>
-                            <div class="h-8 flex items-center whitespace-nowrap">Available for Innovation</div>
+                        <div class="animate-badge-scroll absolute top-0 left-0 w-full text-center">
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Available for Innovation</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Serial Entrepreneur</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Growth Architect</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Marketing Strategist</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Data Analytics Expert</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap">CEO, KL Radio</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Operations Expert</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Brand Developer</div>
+                            <div class="h-8 flex items-center justify-center whitespace-nowrap">Available for Innovation</div>
                         </div>
                     </div>
                 </div>
@@ -289,17 +290,20 @@
                     </button>
                 </div>
 
-                <!-- Stats (FIXED: Increased Gap to mt-24) -->
+                <!-- Stats with Headings -->
                 <div class="grid grid-cols-3 gap-4 md:gap-6 pt-8 mt-24 border-t border-stone-200/60 max-w-lg">
                     <div>
+                        <h4 class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">Revenue</h4>
                         <div class="text-2xl md:text-3xl font-display font-bold text-stone-900">₹2.5Cr+</div>
                         <p class="text-[8px] md:text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-1">& Counting</p>
                     </div>
                     <div>
+                        <h4 class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">Leads</h4>
                         <div class="text-2xl md:text-3xl font-display font-bold text-stone-900">4k+</div>
                         <p class="text-[8px] md:text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-1">& Counting</p>
                     </div>
                     <div>
+                        <h4 class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">Ventures</h4>
                         <div class="text-2xl md:text-3xl font-display font-bold text-stone-900">3+</div>
                         <p class="text-[8px] md:text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-1">& Open to New</p>
                     </div>
@@ -588,7 +592,7 @@
                             <h3 class="text-3xl font-display font-bold group-hover:text-lime-700 transition-colors">Campus Trek</h3>
                              <span class="px-3 py-1 bg-lime-100 text-lime-800 text-[10px] font-bold uppercase tracking-widest rounded-full">R&D</span>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Engagement hub architected for pan-India student event tracking.</p>
+                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">Engagement hub architected for pan-India student event tracking and resource sharing.</p>
                         <a href="https://www.campustrekindia.com" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-lime-50 hover:border-lime-200 hover:text-lime-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
@@ -607,7 +611,7 @@
                             <h3 class="text-3xl font-display font-bold group-hover:text-purple-700 transition-colors">Heliom</h3>
                              <span class="px-3 py-1 bg-purple-100 text-purple-800 text-[10px] font-bold uppercase tracking-widest rounded-full">E-Commerce</span>
                         </div>
-                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">D2C Luxury E-commerce ecosystem built for Ayurvedic storytelling.</p>
+                        <p class="text-stone-500 text-sm mb-8 leading-relaxed">D2C Luxury E-commerce ecosystem built for Ayurvedic storytelling and sales.</p>
                         <a href="https://heliomwellness.com" target="_blank" class="w-full py-4 rounded-xl border border-stone-200 font-bold text-center block hover:bg-purple-50 hover:border-purple-200 hover:text-purple-700 transition-all">Launch Platform</a>
                     </div>
                 </div>
@@ -728,6 +732,101 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Salaar World (Instagram) -->
+    <section class="py-16 bg-white border-b border-stone-200 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto px-6 mb-8 flex justify-between items-end reveal-hidden">
+            <div>
+                <h3 class="text-sm font-bold uppercase tracking-[0.3em] text-stone-400">Media & Brand</h3>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-stone-900 mt-2">Salaar World</h2>
+            </div>
+            <a href="https://www.instagram.com/_aadithya.reddy/" target="_blank" class="hidden md:flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full text-sm font-bold hover:shadow-lg hover:scale-105 transition-all">
+                <i data-lucide="instagram" class="w-4 h-4"></i> Follow
+            </a>
+        </div>
+        
+        <div class="flex w-max animate-horizontal-marquee hover:[animation-play-state:paused] gap-8 px-6">
+             <!-- Post 1 -->
+             <a href="http://instagram.com/p/DUNjwJuEuy7/" target="_blank" class="group relative w-64 h-64 bg-stone-100 rounded-3xl overflow-hidden shrink-0 border border-stone-200">
+                <div class="absolute inset-0 bg-[url('https://i.ibb.co/ccsHrvGF/image.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 text-white">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i data-lucide="video" class="w-4 h-4"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider">Latest Reel</span>
+                    </div>
+                    <p class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Watch Video ↗</p>
+                </div>
+             </a>
+             
+             <!-- Post 2 -->
+             <a href="https://www.instagram.com/p/DULgiwzEg3Q/" target="_blank" class="group relative w-64 h-64 bg-stone-100 rounded-3xl overflow-hidden shrink-0 border border-stone-200">
+                <div class="absolute inset-0 bg-[url('https://i.ibb.co/SwzdQHV2/image.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"></div>
+                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 text-white">
+                     <div class="flex items-center gap-2 mb-1">
+                        <i data-lucide="video" class="w-4 h-4"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider">Latest Reel</span>
+                    </div>
+                     <p class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Watch Video ↗</p>
+                </div>
+             </a>
+
+             <!-- Post 3 -->
+             <a href="https://www.instagram.com/p/DT6NzHJkymT/" target="_blank" class="group relative w-64 h-64 bg-stone-100 rounded-3xl overflow-hidden shrink-0 border border-stone-200">
+                <div class="absolute inset-0 bg-[url('https://i.ibb.co/21SxpTxS/image.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"></div>
+                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 text-white">
+                     <div class="flex items-center gap-2 mb-1">
+                        <i data-lucide="video" class="w-4 h-4"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider">Latest Reel</span>
+                    </div>
+                     <p class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Watch Video ↗</p>
+                </div>
+             </a>
+             
+             <!-- Profile Card -->
+             <a href="https://www.instagram.com/_aadithya.reddy/" target="_blank" class="group relative w-64 h-64 bg-white rounded-3xl overflow-hidden shrink-0 border border-stone-200 flex flex-col items-center justify-center text-center p-6 hover:shadow-xl transition-all">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 p-[2px] mb-4 group-hover:scale-110 transition-transform">
+                    <div class="w-full h-full rounded-full bg-white flex items-center justify-center">
+                         <i data-lucide="instagram" class="w-8 h-8 text-stone-900"></i>
+                    </div>
+                </div>
+                <h4 class="font-bold text-lg text-stone-900">@_aadithya.reddy</h4>
+                <p class="text-xs text-stone-500 mt-2">Follow for insights on product architecture & startups.</p>
+             </a>
+
+             <!-- Duplicate for loop -->
+             <a href="http://instagram.com/p/DUNjwJuEuy7/" target="_blank" class="group relative w-64 h-64 bg-stone-100 rounded-3xl overflow-hidden shrink-0 border border-stone-200">
+                <div class="absolute inset-0 bg-[url('https://i.ibb.co/ccsHrvGF/image.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 text-white">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i data-lucide="video" class="w-4 h-4"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider">Latest Reel</span>
+                    </div>
+                    <p class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Watch Video ↗</p>
+                </div>
+             </a>
+             <a href="https://www.instagram.com/p/DULgiwzEg3Q/" target="_blank" class="group relative w-64 h-64 bg-stone-100 rounded-3xl overflow-hidden shrink-0 border border-stone-200">
+                <div class="absolute inset-0 bg-[url('https://i.ibb.co/SwzdQHV2/image.png')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"></div>
+                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 text-white">
+                     <div class="flex items-center gap-2 mb-1">
+                        <i data-lucide="video" class="w-4 h-4"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider">Latest Reel</span>
+                    </div>
+                     <p class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Watch Video ↗</p>
+                </div>
+             </a>
+        </div>
+        
+        <div class="md:hidden mt-8 px-6 text-center">
+             <a href="https://www.instagram.com/_aadithya.reddy/" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full text-sm font-bold shadow-md">
+                <i data-lucide="instagram" class="w-4 h-4"></i> Follow on Instagram
+            </a>
         </div>
     </section>
 
@@ -1021,6 +1120,24 @@
             slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
         
+        // Archive Modal Toggle
+        function toggleArchive() {
+            const modal = document.getElementById('archive-modal');
+            if (modal.classList.contains('opacity-0')) {
+                // Open
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('modal-enter');
+                document.body.style.overflow = 'hidden';
+                // Re-init icons inside modal just in case
+                lucide.createIcons();
+            } else {
+                // Close
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.classList.remove('modal-enter');
+                document.body.style.overflow = '';
+            }
+        }
+
         // FAB Toggle Function
         function toggleFab(fabId) {
             const fab = document.getElementById(fabId);
