@@ -15,75 +15,72 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Tailwind Config -->
     <script>
-        window.onload = function() {
-            if (typeof tailwind !== 'undefined') {
-                tailwind.config = {
-                    theme: {
-                        extend: {
-                            fontFamily: {
-                                sans: ['Outfit', 'sans-serif'],
-                                display: ['Space Grotesk', 'sans-serif'],
-                            },
-                            colors: {
-                                stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 300: '#d6d3d1', 900: '#1c1917' },
-                                emerald: { 50: '#ecfdf5', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' }
-                            },
-                            animation: {
-                                'blob': "blob 12s infinite",
-                                'float': 'float 6s ease-in-out infinite',
-                                'scroll-reveal': 'reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-                                'badge-scroll': 'badgeRolesCycle 20s cubic-bezier(0.76, 0, 0.24, 1) infinite',
-                                'vertical-marquee': 'vMarquee 20s linear infinite',
-                                'horizontal-marquee': 'hMarquee 30s linear infinite',
-                                'ecosystem-scroll': 'hMarquee 60s linear infinite',
-                                'slider-scroll': 'sliderScroll 40s linear infinite',
-                                'spin-slow': 'spin 8s linear infinite',
-                                'emoji-float': 'emojiFloat 1.5s ease-out forwards',
-                            },
-                            keyframes: {
-                                blob: {
-                                    "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
-                                    "33%": { transform: "translate(40px, -60px) scale(1.15)" },
-                                    "66%": { transform: "translate(-30px, 30px) scale(0.9)" },
-                                },
-                                float: {
-                                    '0%, 100%': { transform: 'translateY(0)' },
-                                    '50%': { transform: 'translateY(-15px)' },
-                                },
-                                reveal: {
-                                    '0%': { opacity: '0', transform: 'translateY(30px)' },
-                                    '100%': { opacity: '1', transform: 'translateY(0)' },
-                                },
-                                vMarquee: {
-                                    '0%': { transform: 'translateY(0)' },
-                                    '100%': { transform: 'translateY(-50%)' }
-                                },
-                                hMarquee: {
-                                    '0%': { transform: 'translateX(0)' },
-                                    '100%': { transform: 'translateX(-50%)' }
-                                },
-                                sliderScroll: {
-                                    '0%': { transform: 'translateX(0)' },
-                                    '100%': { transform: 'translateX(-50%)' }
-                                },
-                                badgeRolesCycle: {
-                                    '0%, 8%': { transform: 'translateY(0)' },
-                                    '10%, 18%': { transform: 'translateY(-2rem)' },
-                                    '20%, 28%': { transform: 'translateY(-4rem)' },
-                                    '30%, 38%': { transform: 'translateY(-6rem)' },
-                                    '40%, 48%': { transform: 'translateY(-8rem)' },
-                                    '50%, 58%': { transform: 'translateY(-10rem)' },
-                                    '60%, 68%': { transform: 'translateY(-12rem)' },
-                                    '70%, 78%': { transform: 'translateY(-14rem)' },
-                                    '80%, 100%': { transform: 'translateY(-16rem)' }
-                                },
-                                emojiFloat: {
-                                    '0%': { transform: 'translateY(0) scale(0.5)', opacity: '0' },
-                                    '20%': { opacity: '1', transform: 'translateY(-20px) scale(1.2)' },
-                                    '100%': { transform: 'translateY(-100px) scale(1)', opacity: '0' }
-                                }
-                            }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 300: '#d6d3d1', 900: '#1c1917' },
+                        emerald: { 50: '#ecfdf5', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' }
+                    },
+                    animation: {
+                        'blob': "blob 12s infinite",
+                        'float': 'float 6s ease-in-out infinite',
+                        'scroll-reveal': 'reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                        'badge-scroll': 'badgeRolesCycle 20s cubic-bezier(0.76, 0, 0.24, 1) infinite',
+                        'vertical-marquee': 'vMarquee 20s linear infinite',
+                        'horizontal-marquee': 'hMarquee 30s linear infinite',
+                        'ecosystem-scroll': 'hMarquee 60s linear infinite',
+                        'slider-scroll': 'sliderScroll 40s linear infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'emoji-float': 'emojiFloat 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(40px, -60px) scale(1.15)" },
+                            "66%": { transform: "translate(-30px, 30px) scale(0.9)" },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        reveal: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        vMarquee: {
+                            '0%': { transform: 'translateY(0)' },
+                            '100%': { transform: 'translateY(-50%)' }
+                        },
+                        hMarquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        sliderScroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        badgeRolesCycle: {
+                            '0%, 8%': { transform: 'translateY(0)' },
+                            '10%, 18%': { transform: 'translateY(-2rem)' },
+                            '20%, 28%': { transform: 'translateY(-4rem)' },
+                            '30%, 38%': { transform: 'translateY(-6rem)' },
+                            '40%, 48%': { transform: 'translateY(-8rem)' },
+                            '50%, 58%': { transform: 'translateY(-10rem)' },
+                            '60%, 68%': { transform: 'translateY(-12rem)' },
+                            '70%, 78%': { transform: 'translateY(-14rem)' },
+                            '80%, 100%': { transform: 'translateY(-16rem)' }
+                        },
+                        emojiFloat: {
+                            '0%': { transform: 'translateY(0) scale(0.5)', opacity: '0' },
+                            '20%': { opacity: '1', transform: 'translateY(-20px) scale(1.2)' },
+                            '100%': { transform: 'translateY(-100px) scale(1)', opacity: '0' }
                         }
                     }
                 }
@@ -231,19 +228,20 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-[90] bg-stone-50/98 backdrop-blur-3xl translate-x-full transition-transform duration-500 md:hidden flex flex-col items-center justify-center gap-8">
-        <a href="#home" class="mobile-link text-4xl font-display font-bold text-stone-900 hover:text-emerald-700 transition-colors">Home</a>
-        <a href="#experience" class="mobile-link text-4xl font-display font-bold text-stone-900 hover:text-emerald-700 transition-colors">Journey</a>
-        <a href="#projects" class="mobile-link text-4xl font-display font-bold text-stone-900 hover:text-emerald-700 transition-colors">Ecosystem</a>
-        <a href="#contact" class="mobile-link text-4xl font-display font-bold text-emerald-600">Contact</a>
+    <!-- Added pointer-events-none by default to prevent blocking clicks on hero section -->
+    <div id="mobile-menu" class="fixed inset-0 z-[90] bg-stone-50/98 backdrop-blur-3xl translate-x-full pointer-events-none transition-transform duration-500 md:hidden flex flex-col items-center justify-center gap-8">
+        <a href="#home" class="mobile-link text-4xl font-display font-bold text-stone-900 hover:text-emerald-700 transition-colors pointer-events-auto">Home</a>
+        <a href="#experience" class="mobile-link text-4xl font-display font-bold text-stone-900 hover:text-emerald-700 transition-colors pointer-events-auto">Journey</a>
+        <a href="#projects" class="mobile-link text-4xl font-display font-bold text-stone-900 hover:text-emerald-700 transition-colors pointer-events-auto">Ecosystem</a>
+        <a href="#contact" class="mobile-link text-4xl font-display font-bold text-emerald-600 pointer-events-auto">Contact</a>
     </div>
 
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center pt-44 md:pt-52 overflow-hidden scroll-mt-32">
-        <!-- Animated Blobs -->
-        <div class="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-emerald-200/40 rounded-full blur-[80px] md:blur-[100px] animate-blob mix-blend-multiply"></div>
-        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-lime-200/40 rounded-full blur-[80px] md:blur-[100px] animate-blob mix-blend-multiply" style="animation-delay: 4s"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-teal-100/30 rounded-full blur-[100px] md:blur-[120px] animate-blob mix-blend-multiply" style="animation-delay: 2s"></div>
+        <!-- Animated Blobs (Added pointer-events-none to prevent blocking) -->
+        <div class="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-emerald-200/40 rounded-full blur-[80px] md:blur-[100px] animate-blob mix-blend-multiply pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-lime-200/40 rounded-full blur-[80px] md:blur-[100px] animate-blob mix-blend-multiply pointer-events-none" style="animation-delay: 4s"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-teal-100/30 rounded-full blur-[100px] md:blur-[120px] animate-blob mix-blend-multiply pointer-events-none" style="animation-delay: 2s"></div>
         
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
             <div class="lg:col-span-7 space-y-8 md:space-y-10 reveal-hidden" id="hero-text">
@@ -353,7 +351,7 @@
 
     <!-- Analysis Slider -->
     <section class="py-12 bg-emerald-950/5 border-y border-stone-200 overflow-hidden relative">
-        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
         <div class="flex w-max animate-horizontal-marquee hover:[animation-play-state:paused] gap-6 items-center px-6">
             <div class="analysis-card-gradient w-64 md:w-72 p-5 md:p-6 rounded-2xl border border-white/40 shadow-sm flex flex-col gap-2 shrink-0">
                 <div class="flex justify-between items-center mb-1">
@@ -762,7 +760,7 @@
                     <div class="aspect-[2/1] bg-stone-900 relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-purple-500/20"></div>
                          <!-- Abstract Grid/Code Background -->
-                        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+                        <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
                         
                         <div class="absolute top-6 right-6">
                             <span class="px-3 py-1 bg-black/50 backdrop-blur-md text-white border border-white/10 text-[10px] font-bold uppercase tracking-widest rounded-full flex items-center gap-2">
@@ -1168,18 +1166,13 @@
     </footer>
 
     <script>
-        lucide.createIcons();
-
-        // Ecosystem Scroll Function
-        function scrollEcosystem(direction) {
-            const slider = document.getElementById('ecosystem-slider');
-            const scrollAmount = 500;
-            slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-        }
+        // GLOBAL FUNCTIONS (Moved outside window.onload/DOMContentLoaded so HTML buttons can find them)
         
         // FAB Toggle Function
         function toggleFab(fabId) {
             const fab = document.getElementById(fabId);
+            if (!fab) return; // Guard clause
+            
             const bg = fab.querySelector('.toggle-bg');
             
             fab.classList.toggle('active');
@@ -1193,8 +1186,6 @@
 
         // Handle Form Submit Animation
         function handleFormSubmit(e) {
-            // We don't preventDefault here because we want the form to submit to Formspree,
-            // but we trigger the animation immediately.
             const btn = document.getElementById('submit-btn');
             
             // Create emojis
@@ -1207,9 +1198,11 @@
                 
                 // Random position relative to button
                 const rect = btn.getBoundingClientRect();
+                
                 // We append to body to ensure they float above everything
+                // Add scroll offset to ensure correct position
                 particle.style.left = (rect.left + Math.random() * rect.width) + 'px';
-                particle.style.top = rect.top + 'px';
+                particle.style.top = (rect.top + window.scrollY) + 'px';
                 
                 document.body.appendChild(particle);
                 
@@ -1220,75 +1213,87 @@
             }
         }
 
-        // Close FABs when clicking outside
-        document.addEventListener('click', function(event) {
-            const fabIds = ['fab-container-h', 'fab-container-b'];
-            
-            fabIds.forEach(id => {
-                const fab = document.getElementById(id);
-                if (fab && !fab.contains(event.target) && fab.classList.contains('active')) {
-                    toggleFab(id);
+        // INITIALIZATION
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            // Close FABs when clicking outside
+            document.addEventListener('click', function(event) {
+                const fabIds = ['fab-container-h', 'fab-container-b'];
+                
+                fabIds.forEach(id => {
+                    const fab = document.getElementById(id);
+                    // Check if click is outside the fab and the fab is currently active
+                    if (fab && !fab.contains(event.target) && fab.classList.contains('active')) {
+                        toggleFab(id);
+                    }
+                });
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled', 'py-4');
+                    nav.classList.remove('py-6');
+                } else {
+                    nav.classList.remove('scrolled', 'py-4');
+                    nav.classList.add('py-6');
                 }
             });
-        });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled', 'py-4');
-                nav.classList.remove('py-6');
-            } else {
-                nav.classList.remove('scrolled', 'py-4');
-                nav.classList.add('py-6');
-            }
-        });
+            // Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        // Intersection Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-visible');
-                    observer.unobserve(entry.target);
+            document.querySelectorAll('.reveal-hidden').forEach(el => observer.observe(el));
+            
+            // Mobile Menu Toggle
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const iconMenu = document.getElementById('icon-menu');
+            const iconClose = document.getElementById('icon-close');
+            let isMenuOpen = false;
+
+            menuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                
+                if (isMenuOpen) {
+                    menu.classList.remove('translate-x-full', 'pointer-events-none');
+                    menu.classList.add('pointer-events-auto'); // Enable clicks
+                    iconMenu.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    menu.classList.add('translate-x-full', 'pointer-events-none'); // Disable clicks
+                    menu.classList.remove('pointer-events-auto');
+                    iconMenu.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                    document.body.style.overflow = '';
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.reveal-hidden').forEach(el => observer.observe(el));
-        
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const iconMenu = document.getElementById('icon-menu');
-        const iconClose = document.getElementById('icon-close');
-        let isMenuOpen = false;
-
-        menuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            menu.classList.toggle('translate-x-full');
-            
-            // Toggle icons directly instead of re-rendering
-            if (isMenuOpen) {
-                iconMenu.classList.add('hidden');
-                iconClose.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            } else {
-                iconMenu.classList.remove('hidden');
-                iconClose.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                isMenuOpen = false;
-                menu.classList.add('translate-x-full');
-                
-                // Reset icons
-                iconMenu.classList.remove('hidden');
-                iconClose.classList.add('hidden');
-                
-                document.body.style.overflow = '';
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    isMenuOpen = false;
+                    menu.classList.add('translate-x-full', 'pointer-events-none');
+                    menu.classList.remove('pointer-events-auto');
+                    
+                    // Reset icons
+                    iconMenu.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                    
+                    document.body.style.overflow = '';
+                });
             });
         });
     </script>
