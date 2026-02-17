@@ -226,7 +226,7 @@
             </div>
 
             <!-- Mobile Menu Button - OPTIMIZED: Inline SVG for instant loading -->
-            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2.5 bg-white/10 border border-white/10 rounded-xl shadow-sm text-white z-50 relative active:scale-95 transition-transform cursor-pointer">
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2.5 bg-white/10 border border-white/10 rounded-xl shadow-sm text-white z-50 relative active:scale-95 transition-transform cursor-pointer touch-manipulation">
                 <div id="icon-menu" class="block">
                     <!-- Inline SVG: Menu -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
@@ -239,8 +239,8 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-[90] bg-stone-950/98 backdrop-blur-3xl translate-x-full pointer-events-none transition-transform duration-500 md:hidden flex flex-col items-center justify-center gap-8">
+    <!-- Mobile Menu Overlay - Added 'invisible' to start so it doesn't block clicks -->
+    <div id="mobile-menu" class="fixed inset-0 z-[90] bg-stone-950/98 backdrop-blur-3xl translate-x-full pointer-events-none invisible transition-all duration-500 md:hidden flex flex-col items-center justify-center gap-8">
         <a href="#home" onclick="closeMobileMenu()" class="mobile-link text-4xl font-display font-bold text-white hover:text-red-500 transition-colors pointer-events-auto">Home</a>
         <a href="#experience" onclick="closeMobileMenu()" class="mobile-link text-4xl font-display font-bold text-white hover:text-red-500 transition-colors pointer-events-auto">Journey</a>
         <a href="#projects" onclick="closeMobileMenu()" class="mobile-link text-4xl font-display font-bold text-white hover:text-red-500 transition-colors pointer-events-auto">Ecosystem</a>
@@ -289,14 +289,14 @@
                     </p>
                 </div>
 
-                <!-- CTAs: OPTIMIZED FOR MOBILE -->
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="https://www.instagram.com/_aadithya.reddy/" target="_blank" class="group px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-red-600 to-black text-white font-bold rounded-2xl shadow-xl shadow-red-900/20 active:scale-95 transition-all flex items-center gap-2 text-sm md:text-base border border-red-500/30 cursor-pointer relative z-20">
+                <!-- CTAs: OPTIMIZED FOR MOBILE - Full Width + Z-Index Boost -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <a href="https://www.instagram.com/_aadithya.reddy/" target="_blank" class="group w-full sm:w-auto px-6 py-4 md:py-4 bg-gradient-to-r from-red-600 to-black text-white font-bold rounded-2xl shadow-xl shadow-red-900/20 active:scale-95 transition-all flex items-center justify-center gap-2 text-sm md:text-base border border-red-500/30 cursor-pointer relative z-30 touch-manipulation">
                         <span>Join Salaar Saga</span>
                         <!-- Inline SVG for instant load -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-12 transition-transform"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                     </a>
-                    <a href="#contact" class="px-6 py-3 md:px-8 md:py-4 bg-white/10 text-white border border-white/10 font-bold rounded-2xl active:scale-95 hover:bg-white/20 transition-all text-sm md:text-base flex items-center justify-center cursor-pointer relative z-20">
+                    <a href="#contact" class="w-full sm:w-auto px-6 py-4 md:py-4 bg-white/10 text-white border border-white/10 font-bold rounded-2xl active:scale-95 hover:bg-white/20 transition-all text-sm md:text-base flex items-center justify-center cursor-pointer relative z-30 touch-manipulation">
                         Start a Project
                     </a>
                 </div>
@@ -1111,8 +1111,13 @@
             
             if (isClosed) {
                 // Open Menu
-                menu.classList.remove('translate-x-full', 'pointer-events-none');
-                menu.classList.add('pointer-events-auto');
+                menu.classList.remove('invisible'); // Make visible first
+                // Use small timeout to allow display change to register before transform
+                setTimeout(() => {
+                    menu.classList.remove('translate-x-full', 'pointer-events-none');
+                    menu.classList.add('pointer-events-auto');
+                }, 10);
+                
                 iconMenu.classList.add('hidden');
                 iconClose.classList.remove('hidden');
                 document.body.style.overflow = 'hidden'; // Lock scroll
@@ -1129,6 +1134,12 @@
             
             menu.classList.add('translate-x-full', 'pointer-events-none');
             menu.classList.remove('pointer-events-auto');
+            
+            // Wait for transition (500ms) then hide visibility
+            setTimeout(() => {
+                menu.classList.add('invisible');
+            }, 500);
+
             iconMenu.classList.remove('hidden');
             iconClose.classList.add('hidden');
             document.body.style.overflow = ''; // Unlock scroll
