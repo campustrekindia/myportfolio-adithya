@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth scroll-pt-24">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +36,7 @@
                                 'badge-scroll': 'badgeRolesCycle 20s cubic-bezier(0.76, 0, 0.24, 1) infinite',
                                 'vertical-marquee': 'vMarquee 20s linear infinite',
                                 'horizontal-marquee': 'hMarquee 30s linear infinite',
-                                'ecosystem-scroll': 'hMarquee 60s linear infinite', /* Slower for card readability */
+                                'ecosystem-scroll': 'hMarquee 60s linear infinite',
                                 'slider-scroll': 'sliderScroll 40s linear infinite',
                                 'spin-slow': 'spin 8s linear infinite',
                                 'emoji-float': 'emojiFloat 1.5s ease-out forwards',
@@ -222,8 +222,10 @@
             </div>
 
             <!-- Mobile Menu Button -->
+            <!-- FIXED: Dual icons for reliable toggling -->
             <button id="mobile-menu-btn" class="md:hidden p-2.5 bg-white border border-stone-200 rounded-xl shadow-sm text-stone-700 z-50 relative active:scale-95 transition-transform">
-                <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                <div id="icon-menu" class="block"><i data-lucide="menu" class="w-6 h-6"></i></div>
+                <div id="icon-close" class="hidden"><i data-lucide="x" class="w-6 h-6"></i></div>
             </button>
         </div>
     </nav>
@@ -1257,29 +1259,36 @@
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
         let isMenuOpen = false;
 
         menuBtn.addEventListener('click', () => {
             isMenuOpen = !isMenuOpen;
             menu.classList.toggle('translate-x-full');
+            
+            // Toggle icons directly instead of re-rendering
             if (isMenuOpen) {
-                menuIcon.setAttribute('data-lucide', 'x');
+                iconMenu.classList.add('hidden');
+                iconClose.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
             } else {
-                menuIcon.setAttribute('data-lucide', 'menu');
+                iconMenu.classList.remove('hidden');
+                iconClose.classList.add('hidden');
                 document.body.style.overflow = '';
             }
-            lucide.createIcons();
         });
 
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 isMenuOpen = false;
                 menu.classList.add('translate-x-full');
-                menuIcon.setAttribute('data-lucide', 'menu');
+                
+                // Reset icons
+                iconMenu.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                
                 document.body.style.overflow = '';
-                lucide.createIcons();
             });
         });
     </script>
