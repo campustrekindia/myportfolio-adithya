@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-24">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Insights | Adithya Reddy</title>
+    <meta name="description" content="Insights on Social Media, AI, Design, and Tech by Adithya Reddy.">
+    
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config (Matches Portfolio) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: { 50: '#fafaf9', 100: '#f5f5f4', 200: '#e7e5e4', 300: '#d6d3d1', 800: '#292524', 900: '#1c1917', 950: '#0c0a09' },
+                    },
+                    animation: {
+                        'blob': "blob 12s infinite",
+                        'float': 'float 6s ease-in-out infinite',
+                        'reveal': 'reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(40px, -60px) scale(1.15)" },
+                            "66%": { transform: "translate(-30px, 30px) scale(0.9)" },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        reveal: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        /* Mobile Touch Fixes */
+        * { -webkit-tap-highlight-color: transparent; }
+        
+        /* Dark Theme Glass */
+        .glass-card {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .reveal-hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal-visible { opacity: 1; transform: translateY(0); }
+
+        .grid-bg {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
+        }
+
+        /* Modal Animation */
+        .modal-overlay {
+            backdrop-filter: blur(12px);
+            background: rgba(0,0,0,0.85);
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .modal-content {
+            animation: modalUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes modalUp {
+            from { opacity: 0; transform: translateY(50px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1c1917; }
+        ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-stone-950 text-stone-200 antialiased selection:bg-red-900 selection:text-white overflow-x-hidden">
+
+    <!-- Global Grid Background -->
+    <div class="fixed inset-0 z-0 grid-bg opacity-20 pointer-events-none"></div>
+    
+    <!-- Ambient Gradients -->
+    <div class="fixed top-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-red-900/10 blur-[120px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-orange-900/10 blur-[120px] pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] transition-all duration-300 py-4 bg-black/40 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group cursor-pointer relative z-50">
+                <div class="w-10 h-10 bg-gradient-to-br from-red-700 to-black rounded-xl flex items-center justify-center text-white shadow-xl border border-white/10">
+                    <span class="font-display font-bold text-lg">A</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-base leading-tight text-white">Adithya Reddy</span>
+                    <span class="text-[10px] font-bold text-red-500 uppercase tracking-widest">Journal</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-1 bg-white/5 backdrop-blur-md p-1.5 rounded-2xl border border-white/10">
+                <a href="index.html" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-stone-400 rounded-xl hover:bg-white/10 hover:text-white transition-all">Home</a>
+                <a href="#" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-white/10 rounded-xl">Insights</a>
+                <a href="index.html#contact" class="ml-2 px-6 py-2.5 bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-red-600 transition-all">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2.5 bg-white/10 border border-white/10 rounded-xl text-white z-50 active:scale-95 transition-transform touch-manipulation">
+                <div id="icon-menu" class="block"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg></div>
+                <div id="icon-close" class="hidden"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[90] bg-stone-950/98 backdrop-blur-3xl translate-x-full pointer-events-none invisible transition-all duration-500 md:hidden flex flex-col items-center justify-center gap-8">
+        <a href="index.html" class="text-4xl font-display font-bold text-white hover:text-red-500 pointer-events-auto">Home</a>
+        <a href="#" class="text-4xl font-display font-bold text-red-500 pointer-events-auto">Insights</a>
+        <a href="index.html#contact" class="text-4xl font-display font-bold text-white hover:text-red-500 pointer-events-auto">Contact</a>
+    </div>
+
+    <!-- Header Section -->
+    <header class="pt-40 pb-20 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-900/50 bg-red-950/20 text-red-400 text-xs font-bold uppercase tracking-wider mb-6">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                The Architect's Journal
+            </div>
+            <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6">
+                Decoding <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">Digital Culture</span>
+            </h1>
+            <p class="text-stone-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                A deep dive into social media algorithms, video editing mastery, AI workflows, and the future of tech.
+            </p>
+        </div>
+    </header>
+
+    <!-- Categories -->
+    <div class="sticky top-20 z-40 bg-stone-950/80 backdrop-blur-xl border-y border-white/5 py-4 overflow-x-auto no-scrollbar">
+        <div class="max-w-6xl mx-auto px-6 flex gap-4 min-w-max">
+            <button class="px-6 py-2 bg-red-600 text-white rounded-full text-sm font-bold border border-red-500 shadow-lg shadow-red-900/20">All</button>
+            <button class="px-6 py-2 bg-white/5 text-stone-400 hover:text-white rounded-full text-sm font-bold border border-white/10 hover:bg-white/10 transition-all">Social Trends</button>
+            <button class="px-6 py-2 bg-white/5 text-stone-400 hover:text-white rounded-full text-sm font-bold border border-white/10 hover:bg-white/10 transition-all">Video Editing</button>
+            <button class="px-6 py-2 bg-white/5 text-stone-400 hover:text-white rounded-full text-sm font-bold border border-white/10 hover:bg-white/10 transition-all">AI & Tech</button>
+            <button class="px-6 py-2 bg-white/5 text-stone-400 hover:text-white rounded-full text-sm font-bold border border-white/10 hover:bg-white/10 transition-all">Design</button>
+        </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <section class="py-16 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Post 1: Video Editing -->
+            <article onclick="openArticle('post-1')" class="glass-card rounded-[2rem] overflow-hidden group hover:-translate-y-2 transition-all duration-500 reveal-hidden cursor-pointer">
+                <div class="aspect-video bg-stone-800 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                    <!-- Placeholder for Blog Image -->
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1574717432722-a03506458395?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700 opacity-60"></div>
+                    <div class="absolute top-4 left-4 z-20">
+                        <span class="px-3 py-1 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Editing</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-stone-500 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 5 Min Read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-red-500 transition-colors">The Art of the Cut: Pacing in 2025</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6">Why retention rates are dropping and how "micro-pacing" in CapCut and Premiere Pro is saving content creators.</p>
+                    <span class="inline-flex items-center gap-2 text-red-400 font-bold text-sm hover:gap-3 transition-all">Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </div>
+            </article>
+
+            <!-- Post 2: AI -->
+            <article onclick="openArticle('post-2')" class="glass-card rounded-[2rem] overflow-hidden group hover:-translate-y-2 transition-all duration-500 reveal-hidden cursor-pointer" style="transition-delay: 100ms">
+                <div class="aspect-video bg-stone-800 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700 opacity-60"></div>
+                    <div class="absolute top-4 left-4 z-20">
+                        <span class="px-3 py-1 bg-purple-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">AI & Tech</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-stone-500 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 4 Min Read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-purple-500 transition-colors">Gen-AI: The Product Architect's Toolkit</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6">How I use Midjourney for UI ideation and ChatGPT for rapid backend logic prototyping.</p>
+                    <span class="inline-flex items-center gap-2 text-purple-400 font-bold text-sm hover:gap-3 transition-all">Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </div>
+            </article>
+
+            <!-- Post 3: Social Media -->
+            <article onclick="openArticle('post-3')" class="glass-card rounded-[2rem] overflow-hidden group hover:-translate-y-2 transition-all duration-500 reveal-hidden cursor-pointer" style="transition-delay: 200ms">
+                <div class="aspect-video bg-stone-800 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700 opacity-60"></div>
+                    <div class="absolute top-4 left-4 z-20">
+                        <span class="px-3 py-1 bg-orange-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Social Trends</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-stone-500 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 6 Min Read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-orange-500 transition-colors">The Instagram Algorithm Shift</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6">Static posts are back? Why the "Photo Dump" aesthetic is outperforming Reels in engagement depth.</p>
+                    <span class="inline-flex items-center gap-2 text-orange-400 font-bold text-sm hover:gap-3 transition-all">Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </div>
+            </article>
+
+            <!-- Post 4: Design -->
+            <article onclick="openArticle('post-4')" class="glass-card rounded-[2rem] overflow-hidden group hover:-translate-y-2 transition-all duration-500 reveal-hidden cursor-pointer">
+                <div class="aspect-video bg-stone-800 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558655146-d09347e0b7a9?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700 opacity-60"></div>
+                    <div class="absolute top-4 left-4 z-20">
+                        <span class="px-3 py-1 bg-pink-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Design</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-stone-500 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 3 Min Read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-pink-500 transition-colors">Dark Mode UI Psychology</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6">Why high-contrast dark themes (like this portfolio) increase perceived value and user focus.</p>
+                    <span class="inline-flex items-center gap-2 text-pink-400 font-bold text-sm hover:gap-3 transition-all">Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </div>
+            </article>
+
+             <!-- Post 5: Tech -->
+             <article onclick="openArticle('post-5')" class="glass-card rounded-[2rem] overflow-hidden group hover:-translate-y-2 transition-all duration-500 reveal-hidden cursor-pointer" style="transition-delay: 100ms">
+                <div class="aspect-video bg-stone-800 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700 opacity-60"></div>
+                    <div class="absolute top-4 left-4 z-20">
+                        <span class="px-3 py-1 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Tech</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-stone-500 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 7 Min Read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-blue-500 transition-colors">No-Code vs. Full-Stack in 2026</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6">Is Webflow and Bubble enough to scale a SaaS? Analyzing the breakdown point of no-code tools.</p>
+                    <span class="inline-flex items-center gap-2 text-blue-400 font-bold text-sm hover:gap-3 transition-all">Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </div>
+            </article>
+
+             <!-- Post 6: Video -->
+             <article onclick="openArticle('post-6')" class="glass-card rounded-[2rem] overflow-hidden group hover:-translate-y-2 transition-all duration-500 reveal-hidden cursor-pointer" style="transition-delay: 200ms">
+                <div class="aspect-video bg-stone-800 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-110 transition-transform duration-700 opacity-60"></div>
+                    <div class="absolute top-4 left-4 z-20">
+                        <span class="px-3 py-1 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Editing</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 text-stone-500 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i data-lucide="clock" class="w-3 h-3"></i> 4 Min Read
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-red-500 transition-colors">Color Grading for Emotion</h3>
+                    <p class="text-stone-400 text-sm leading-relaxed mb-6">Using Teal and Orange isn't enough. How to use color theory to manipulate viewer retention.</p>
+                    <span class="inline-flex items-center gap-2 text-red-400 font-bold text-sm hover:gap-3 transition-all">Read Article <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black mt-20">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-stone-500 text-xs font-bold uppercase tracking-widest">© 2026 Adithya Reddy</p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="text-stone-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="text-stone-500 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="#" class="text-stone-500 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ARTICLE READING MODAL -->
+    <div id="article-modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4 sm:p-6 transition-all duration-300">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 modal-overlay cursor-pointer" onclick="closeArticle()"></div>
+        
+        <!-- Modal Card -->
+        <div class="relative w-full max-w-2xl bg-stone-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh] modal-content">
+            <!-- Close Button -->
+            <button onclick="closeArticle()" class="absolute top-4 right-4 p-2 bg-black/60 backdrop-blur-md text-white rounded-full hover:bg-red-600 transition-colors z-20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            
+            <!-- Banner Image -->
+            <div id="modal-image" class="h-48 sm:h-60 bg-cover bg-center shrink-0 w-full relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-stone-900 to-transparent"></div>
+            </div>
+            
+            <!-- Text Content -->
+            <div class="p-6 sm:p-8 overflow-y-auto custom-scrollbar flex-1 bg-stone-900">
+                <div class="flex items-center gap-3 mb-4">
+                    <span id="modal-category" class="px-3 py-1 bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">Category</span>
+                    <span id="modal-read-time" class="text-stone-500 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        5 Min Read
+                    </span>
+                </div>
+                
+                <h2 id="modal-title" class="text-2xl sm:text-3xl font-display font-bold text-white mb-6 leading-tight">Title Here</h2>
+                
+                <div id="modal-body" class="prose prose-invert prose-stone max-w-none text-stone-300 leading-relaxed text-base sm:text-lg">
+                    <!-- Dynamic Content -->
+                </div>
+                
+                <!-- Share/CTA Area -->
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <p class="text-stone-500 text-sm mb-4">Enjoyed this perspective? Let's discuss it.</p>
+                    <a href="https://www.instagram.com/_aadithya.reddy/" target="_blank" class="inline-flex items-center gap-2 text-white font-bold hover:text-red-500 transition-colors">
+                        <i data-lucide="instagram" class="w-4 h-4"></i> DM on Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Init Lucide
+        lucide.createIcons();
+
+        // Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-hidden').forEach(el => observer.observe(el));
+
+        // --- BLOG CONTENT DATA ---
+        const blogPosts = {
+            'post-1': {
+                title: "The Art of the Cut: Pacing in 2025",
+                category: "Editing",
+                readTime: "5 Min Read",
+                image: "https://images.unsplash.com/photo-1574717432722-a03506458395?auto=format&fit=crop&q=80&w=800",
+                color: "bg-red-600",
+                content: `
+                    <p class="mb-4"><strong class="text-white">Attention spans aren't just shortening; they're evolving.</strong> In 2025, the old "3-Second Rule" is obsolete. We're now dealing with <em>micro-pacing</em>.</p>
+                    <p class="mb-4">The secret isn't just cutting fast; it's changing the visual state constantly. A static talking head dies in 2 seconds. By introducing a generic zoom, a text overlay, or a b-roll insert every 1.5 seconds, you reset the viewer's dopamine loop.</p>
+                    <p class="mb-4">Tools like CapCut have democratized "retention graphs," but true mastery lies in rhythm. Don't cut to the beat; cut <em>against</em> it occasionally to create subconscious tension.</p>
+                    <p class="mb-4"><strong class="text-white">The Golden Technique:</strong> Use 'J-cuts' (where audio precedes video) to pull the viewer into the next scene before they even see it. It's not just editing; it's psychological guidance.</p>
+                `
+            },
+            'post-2': {
+                title: "Gen-AI: The Product Architect's Toolkit",
+                category: "AI & Tech",
+                readTime: "4 Min Read",
+                image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800",
+                color: "bg-purple-600",
+                content: `
+                    <p class="mb-4"><strong class="text-white">AI isn't replacing architects; it's giving them a jetpack.</strong> The workflow has shifted from "Creation" to "Curation".</p>
+                    <p class="mb-4">I no longer start with a blank Figma canvas. I start with Midjourney v6. Using prompts like <code>--sref</code> (Style Reference), I generate 50 UI layouts in the time it used to take to wireframe one. It allows for rapid aesthetic exploration before committing to pixels.</p>
+                    <p class="mb-4">For backend logic, Claude 3.5 Sonnet is the architect's best friend. I feed it database schemas and ask for edge-case vulnerabilities. It acts as a senior engineer doing a code review.</p>
+                    <p class="mb-4"><strong class="text-white">The Shift:</strong> The value of a product architect is no longer in how well you can draw a button, but in how effectively you can orchestrate AI agents to build the system for you.</p>
+                `
+            },
+            'post-3': {
+                title: "The Instagram Algorithm Shift",
+                category: "Social Trends",
+                readTime: "6 Min Read",
+                image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800",
+                color: "bg-orange-600",
+                content: `
+                    <p class="mb-4"><strong class="text-white">Stop obsessing over Reels views.</strong> The real currency in 2026 is "Saves" and "Shares".</p>
+                    <p class="mb-4">The algorithm has pivoted. It used to prioritize watch time (entertainment). Now, it prioritizes "retention utility" (education/inspiration). This explains the massive resurgence of the carousel format.</p>
+                    <p class="mb-4"><strong class="text-white">The Carousel Comeback:</strong> Photo dumps and educational carousels are outperforming video because they require active engagement (swiping) rather than passive consumption (watching). This signals higher intent to the algorithm.</p>
+                    <p class="mb-4"><strong class="text-white">Strategy:</strong> Design your first slide to stop the scroll (Visceral Hook), and your last slide to trigger a Save (Utility Hook). If your content isn't saveable, it's invisible.</p>
+                `
+            },
+            'post-4': {
+                title: "Dark Mode UI Psychology",
+                category: "Design",
+                readTime: "3 Min Read",
+                image: "https://images.unsplash.com/photo-1558655146-d09347e0b7a9?auto=format&fit=crop&q=80&w=800",
+                color: "bg-pink-600",
+                content: `
+                    <p class="mb-4">Why do Tesla, Apple Pro apps, and Netflix use predominantly dark interfaces? It's not just battery saving; it's <strong class="text-white">perceived value</strong>.</p>
+                    <p class="mb-4">Dark mode (specifically, deep charcoal <code>#0c0a09</code>, never pure black <code>#000000</code>) creates an illusion of depth and luxury. It reduces eye strain, which statistically increases session time by up to 22% in evening hours.</p>
+                    <p class="mb-4">However, contrast is key. Using pure white text on dark backgrounds causes "halation" (a blurring effect). The pro move is to use an off-white like <code>#E5E5E5</code> for text to maintain sharpness while keeping the "premium" contrast.</p>
+                    <p class="mb-4"><strong class="text-white">Takeaway:</strong> Dark mode isn't a feature; it's an aesthetic choice that signals "Professional Grade".</p>
+                `
+            },
+            'post-5': {
+                title: "No-Code vs. Full-Stack in 2026",
+                category: "AI & Tech",
+                readTime: "7 Min Read",
+                image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
+                color: "bg-blue-600",
+                content: `
+                    <p class="mb-4">The line has blurred. Tools like Bubble and FlutterFlow are no longer just for MVPs; they are scaling to Series A funding rounds.</p>
+                    <p class="mb-4">However, the trap is "Vendor Lock-in". The smart play in 2026 is the <strong class="text-white">Hybrid Stack</strong>: Use No-Code for the frontend (Webflow/Framer) to iterate design instantly, but hook it up to a real, scalable backend like Supabase or Xano.</p>
+                    <p class="mb-4">This gives you the marketing speed of a design tool with the data integrity of an SQL database. It's the best of both worlds.</p>
+                    <p class="mb-4"><strong class="text-white">Verdict:</strong> If you are building logic, code it. If you are building an interface, drag-and-drop it. Don't waste engineering hours moving pixels 2px to the right.</p>
+                `
+            },
+            'post-6': {
+                title: "Color Grading for Emotion",
+                category: "Editing",
+                readTime: "4 Min Read",
+                image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800",
+                color: "bg-red-600",
+                content: `
+                    <p class="mb-4">Teal and Orange is the "Pop Song" of color grading—catchy, but generic. To stand out, you need to grade for emotion, not just aesthetics.</p>
+                    <p class="mb-4"><strong class="text-white">Color Psychology:</strong></p>
+                    <ul class="list-disc pl-5 mb-4 text-stone-400 space-y-2">
+                        <li><strong class="text-red-400">Red:</strong> Increases heart rate. Use for conflict or high-stakes moments.</li>
+                        <li><strong class="text-blue-400">Desaturated Blue:</strong> Creates isolation and cold calculation. Perfect for tech tutorials or serious data analysis.</li>
+                    </ul>
+                    <p class="mb-4"><strong class="text-white">The Technique:</strong> Use "Power Windows" in DaVinci Resolve to subtly darken the edges of the frame (vignette) and brighten the subject's face. It guides the viewer's eye without them realizing they are being directed.</p>
+                `
+            }
+        };
+
+        // --- MODAL FUNCTIONS ---
+        function openArticle(id) {
+            const modal = document.getElementById('article-modal');
+            const data = blogPosts[id];
+            
+            if(!data) return;
+
+            // Populate Modal
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-category').innerText = data.category;
+            document.getElementById('modal-category').className = `px-3 py-1 text-white text-[10px] font-bold uppercase tracking-widest rounded-full ${data.color}`;
+            document.getElementById('modal-read-time').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${data.readTime}`;
+            document.getElementById('modal-image').style.backgroundImage = `url('${data.image}')`;
+            document.getElementById('modal-body').innerHTML = data.content;
+
+            // Show Modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Lock scroll
+        }
+
+        function closeArticle() {
+            const modal = document.getElementById('article-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = ''; // Unlock scroll
+        }
+
+        // Close on Escape Key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeArticle();
+            }
+        });
+
+        // Mobile Menu Logic
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const iconMenu = document.getElementById('icon-menu');
+            const iconClose = document.getElementById('icon-close');
+            
+            const isClosed = menu.classList.contains('translate-x-full');
+            
+            if (isClosed) {
+                menu.classList.remove('invisible'); 
+                setTimeout(() => {
+                    menu.classList.remove('translate-x-full', 'pointer-events-none');
+                    menu.classList.add('pointer-events-auto');
+                }, 10);
+                iconMenu.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                closeMobileMenu();
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const iconMenu = document.getElementById('icon-menu');
+            const iconClose = document.getElementById('icon-close');
+            
+            menu.classList.add('translate-x-full', 'pointer-events-none');
+            menu.classList.remove('pointer-events-auto');
+            setTimeout(() => { menu.classList.add('invisible'); }, 500);
+            
+            iconMenu.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>
