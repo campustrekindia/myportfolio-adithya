@@ -6,6 +6,12 @@
     <title>Adithya Reddy | Product Architect</title>
     <meta name="description" content="Portfolio of Adithya Reddy - Product Architect, Marketing Strategist, and Serial Entrepreneur">
     
+    <!-- Performance Optimization: Preconnect to CDNs -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -215,8 +221,8 @@
                 <a href="#contact" class="ml-2 px-6 py-2.5 bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-red-600 hover:shadow-lg hover:shadow-red-900/40 transition-all transform hover:-translate-y-0.5">Let's Talk</a>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2.5 bg-white/10 border border-white/10 rounded-xl shadow-sm text-white z-50 relative active:scale-95 transition-transform">
+            <!-- Mobile Menu Button - USING INLINE ONCLICK FOR INSTANT RESPONSE -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2.5 bg-white/10 border border-white/10 rounded-xl shadow-sm text-white z-50 relative active:scale-95 transition-transform cursor-pointer">
                 <div id="icon-menu" class="block"><i data-lucide="menu" class="w-6 h-6"></i></div>
                 <div id="icon-close" class="hidden"><i data-lucide="x" class="w-6 h-6"></i></div>
             </button>
@@ -225,15 +231,15 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[90] bg-stone-950/98 backdrop-blur-3xl translate-x-full pointer-events-none transition-transform duration-500 md:hidden flex flex-col items-center justify-center gap-8">
-        <a href="#home" class="mobile-link text-4xl font-display font-bold text-white hover:text-red-500 transition-colors pointer-events-auto">Home</a>
-        <a href="#experience" class="mobile-link text-4xl font-display font-bold text-white hover:text-red-500 transition-colors pointer-events-auto">Journey</a>
-        <a href="#projects" class="mobile-link text-4xl font-display font-bold text-white hover:text-red-500 transition-colors pointer-events-auto">Ecosystem</a>
-        <a href="#contact" class="mobile-link text-4xl font-display font-bold text-red-600 pointer-events-auto">Contact</a>
+        <a href="#home" onclick="closeMobileMenu()" class="mobile-link text-4xl font-display font-bold text-white hover:text-red-500 transition-colors pointer-events-auto">Home</a>
+        <a href="#experience" onclick="closeMobileMenu()" class="mobile-link text-4xl font-display font-bold text-white hover:text-red-500 transition-colors pointer-events-auto">Journey</a>
+        <a href="#projects" onclick="closeMobileMenu()" class="mobile-link text-4xl font-display font-bold text-white hover:text-red-500 transition-colors pointer-events-auto">Ecosystem</a>
+        <a href="#contact" onclick="closeMobileMenu()" class="mobile-link text-4xl font-display font-bold text-red-600 pointer-events-auto">Contact</a>
     </div>
 
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center pt-44 md:pt-52 overflow-hidden scroll-mt-32">
-        <!-- Animated Blobs (Updated colors to Red/Orange) -->
+        <!-- Animated Blobs (Pointer events none for click-through) -->
         <div class="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-red-600/20 rounded-full blur-[80px] md:blur-[100px] animate-blob mix-blend-screen pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-orange-600/20 rounded-full blur-[80px] md:blur-[100px] animate-blob mix-blend-screen pointer-events-none" style="animation-delay: 4s"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-rose-600/10 rounded-full blur-[100px] md:blur-[120px] animate-blob mix-blend-screen pointer-events-none" style="animation-delay: 2s"></div>
@@ -1079,13 +1085,48 @@
         </div>
     </footer>
 
+    <!-- Inline Functions for Speed & Reliability -->
     <script>
-        // GLOBAL FUNCTIONS (Moved outside window.onload/DOMContentLoaded so HTML buttons can find them)
+        // GLOBAL FUNCTIONS (Defined immediately so HTML buttons can find them)
         
-        // FAB Toggle Function
+        // 1. Mobile Menu Logic
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const iconMenu = document.getElementById('icon-menu');
+            const iconClose = document.getElementById('icon-close');
+            
+            // Check current state by looking for the class
+            const isClosed = menu.classList.contains('translate-x-full');
+            
+            if (isClosed) {
+                // Open Menu
+                menu.classList.remove('translate-x-full', 'pointer-events-none');
+                menu.classList.add('pointer-events-auto');
+                iconMenu.classList.add('hidden');
+                iconClose.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Lock scroll
+            } else {
+                // Close Menu
+                closeMobileMenu();
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const iconMenu = document.getElementById('icon-menu');
+            const iconClose = document.getElementById('icon-close');
+            
+            menu.classList.add('translate-x-full', 'pointer-events-none');
+            menu.classList.remove('pointer-events-auto');
+            iconMenu.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+            document.body.style.overflow = ''; // Unlock scroll
+        }
+
+        // 2. FAB Toggle Function
         function toggleFab(fabId) {
             const fab = document.getElementById(fabId);
-            if (!fab) return; // Guard clause
+            if (!fab) return; 
             
             const bg = fab.querySelector('.toggle-bg');
             
@@ -1098,15 +1139,11 @@
             }
         }
 
-        // Handle Form Submit Animation
+        // 3. Form Submit Animation
         function handleFormSubmit(e) {
             // Note: We do NOT preventDefault() here because we want the form to submit to Formspree.
-            // We just trigger the visual animation.
-            
             try {
                 const btn = document.getElementById('submit-btn');
-                
-                // Create emojis
                 const emojis = ['👍', '🚀', '📨', '✨', '🔥', '💼'];
                 
                 for (let i = 0; i < 15; i++) {
@@ -1114,29 +1151,24 @@
                     particle.classList.add('emoji-particle');
                     particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
                     
-                    // Random position relative to button
                     const rect = btn.getBoundingClientRect();
-                    
-                    // We append to body to ensure they float above everything
-                    // Add scroll offset to ensure correct position
+                    // Add scroll offset to ensure correct position relative to document
                     particle.style.left = (rect.left + Math.random() * rect.width) + 'px';
                     particle.style.top = (rect.top + window.scrollY) + 'px';
                     
                     document.body.appendChild(particle);
                     
-                    // Remove after animation
                     setTimeout(() => {
                         particle.remove();
                     }, 1500);
                 }
             } catch (error) {
                 console.error("Animation failed", error);
-                // Allow form submission to proceed even if animation fails
             }
             return true;
         }
 
-        // INITIALIZATION
+        // 4. Initialization Logic
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize Lucide Icons
             if (typeof lucide !== 'undefined') {
@@ -1149,7 +1181,6 @@
                 
                 fabIds.forEach(id => {
                     const fab = document.getElementById(id);
-                    // Check if click is outside the fab and the fab is currently active
                     if (fab && !fab.contains(event.target) && fab.classList.contains('active')) {
                         toggleFab(id);
                     }
@@ -1179,45 +1210,6 @@
             }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
             document.querySelectorAll('.reveal-hidden').forEach(el => observer.observe(el));
-            
-            // Mobile Menu Toggle
-            const menuBtn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            const iconMenu = document.getElementById('icon-menu');
-            const iconClose = document.getElementById('icon-close');
-            let isMenuOpen = false;
-
-            menuBtn.addEventListener('click', () => {
-                isMenuOpen = !isMenuOpen;
-                
-                if (isMenuOpen) {
-                    menu.classList.remove('translate-x-full', 'pointer-events-none');
-                    menu.classList.add('pointer-events-auto'); // Enable clicks
-                    iconMenu.classList.add('hidden');
-                    iconClose.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    menu.classList.add('translate-x-full', 'pointer-events-none'); // Disable clicks
-                    menu.classList.remove('pointer-events-auto');
-                    iconMenu.classList.remove('hidden');
-                    iconClose.classList.add('hidden');
-                    document.body.style.overflow = '';
-                }
-            });
-
-            document.querySelectorAll('.mobile-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    isMenuOpen = false;
-                    menu.classList.add('translate-x-full', 'pointer-events-none');
-                    menu.classList.remove('pointer-events-auto');
-                    
-                    // Reset icons
-                    iconMenu.classList.remove('hidden');
-                    iconClose.classList.add('hidden');
-                    
-                    document.body.style.overflow = '';
-                });
-            });
         });
     </script>
 </body>
